@@ -64,7 +64,7 @@ public class ArrayImpl implements Array {
                 throw new NoSuchElementException();
             Object[] elementData1 = ArrayImpl.this.elementData;
             cursor = i + 1;
-            return elementData1[lastRet = i];
+            return elementData1[i];
         }
 
         @Override

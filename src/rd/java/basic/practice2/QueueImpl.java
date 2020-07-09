@@ -64,7 +64,7 @@ public class QueueImpl implements Queue {
                 if (i >= elementCount)
                     throw new NoSuchElementException();
                 cursor = i + 1;
-                return elementData[lastRet = i];
+                return elementData[i];
             }
         }
         @Override

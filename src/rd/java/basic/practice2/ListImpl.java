@@ -175,7 +175,7 @@ public class ListImpl implements List {
     public Object getFirst() {
         final Node f = first;
         if (f == null)
-            return null;;
+            return null;
         return f.item;
     }
 
@@ -183,7 +183,7 @@ public class ListImpl implements List {
     public Object getLast() {
         final Node l = last;
         if (l == null)
-            return null;;
+            return null;
         return l.item;
     }
 

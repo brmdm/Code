@@ -67,7 +67,7 @@ public class StackImpl implements Stack {
                 if (i >= elementData1.length)
                     throw new NoSuchElementException();
                 cursor = i;
-                return elementData[lastRet = i];
+                return elementData[i];
                 }
         }
         @Override
