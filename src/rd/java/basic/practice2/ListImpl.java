@@ -46,6 +46,7 @@ public class ListImpl implements List {
     }
 
     @Override
+    @SuppressWarnings("all")
     public void clear() {
         for (Node x = first; x != null; ) {
             Node next = x.next;
