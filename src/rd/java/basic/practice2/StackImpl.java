@@ -7,7 +7,7 @@ public class StackImpl implements Stack {
     private Object[] elementData;
     protected int elementCount;
     protected int capacityIncrement;
-    private static final int DEFAULT_CAPACITY = 3;
+    private static final int DEFAULT_CAPACITY = 4;
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
     private int size;
 
@@ -67,7 +67,7 @@ public class StackImpl implements Stack {
                 return elementData[lastRet = i];
                 }
         }
-
+        @Override
         public void remove() {
             if (lastRet == -1)
                 throw new IllegalStateException();
@@ -126,7 +126,7 @@ public class StackImpl implements Stack {
         Object obj;
         int len = size();
         if (len == 0)
-            throw new NoSuchElementException();
+            return null;
         obj = elementData[len - 1];
 
         elementData[len - 1] = null;
@@ -139,7 +139,7 @@ public class StackImpl implements Stack {
         Object obj;
         int len = size();
         if (len == 0)
-            throw new NoSuchElementException();
+            return null;
         obj = elementData[len - 1];
 
         return obj;
@@ -156,12 +156,13 @@ public class StackImpl implements Stack {
 
         StringBuilder b = new StringBuilder();
         b.append('[');
-        for (int i = 0; ; i++) {
+        for (int i = 0; i < elementData.length ; i++) {
             b.append(String.valueOf(elementData[i]));
             if (i == iMax)
                 return b.append("]").toString();
             b.append(", ");
         }
+        return b.toString();
     }
 
     @SuppressWarnings("all")

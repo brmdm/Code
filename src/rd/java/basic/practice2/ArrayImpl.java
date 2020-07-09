@@ -62,11 +62,12 @@ public class ArrayImpl implements Array {
             int i = cursor;
             if (i >= size)
                 throw new NoSuchElementException();
-            Object[] elementData = ArrayImpl.this.elementData;
+            Object[] elementData1 = ArrayImpl.this.elementData;
             cursor = i + 1;
-            return elementData[lastRet = i];
+            return elementData1[lastRet = i];
         }
 
+        @Override
         public void remove() {
 
             try {
@@ -129,7 +130,7 @@ public class ArrayImpl implements Array {
     @Override
     public void set(int index, Object element) {
         if (index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            throw new IndexOutOfBoundsException();
         }
         elementData[index] = element;
     }
@@ -137,7 +138,7 @@ public class ArrayImpl implements Array {
     @Override
     public Object get(int index) {
         if (index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            throw new IndexOutOfBoundsException();
         }
         return elementData[index];
     }
@@ -161,7 +162,7 @@ public class ArrayImpl implements Array {
     @Override
     public void remove(int index) {
         if (index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            throw new IndexOutOfBoundsException();
         }
         modCount++;
         int numMoved = size - index - 1;

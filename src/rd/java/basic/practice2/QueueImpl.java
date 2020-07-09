@@ -7,7 +7,7 @@ public class QueueImpl implements Queue {
     private Object[] elementData;
     protected int elementCount;
     protected int capacityIncrement;
-    private static final int DEFAULT_CAPACITY = 3;
+    private static final int DEFAULT_CAPACITY = 4;
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
     private int size;
     private int curs = 0;
@@ -50,8 +50,8 @@ public class QueueImpl implements Queue {
     }
 
     private class IteratorImpl implements Iterator<Object> {
-        int cursor;       // index of next element to return
-        int lastRet = -1; // index of last element returned; -1 if no such
+        int cursor;
+        int lastRet = -1;
         int expectedModCount = modCount;
 
         public boolean hasNext() {
@@ -67,7 +67,7 @@ public class QueueImpl implements Queue {
                 return elementData[lastRet = i];
             }
         }
-
+        @Override
         public void remove() {
             if (lastRet == -1)
                 throw new IllegalStateException();
@@ -95,7 +95,7 @@ public class QueueImpl implements Queue {
     }
 
     private static int hugeCapacity(int minCapacity) {
-        if (minCapacity < 0) // overflow
+        if (minCapacity < 0)
             throw new OutOfMemoryError();
         return (minCapacity > MAX_ARRAY_SIZE) ?
                 Integer.MAX_VALUE :
@@ -125,7 +125,7 @@ public class QueueImpl implements Queue {
         Object obj;
         int len = size();
         if (len == 0)
-            throw new NoSuchElementException();
+            return null;
         obj = elementData[curs];
 
         elementData[curs] = null;
@@ -140,13 +140,14 @@ public class QueueImpl implements Queue {
         int len = size();
         if (len == 0)
             throw new NoSuchElementException();
-        obj = elementData[len - 1];
+        obj = elementData[curs];
 
         return obj;
     }
 
     @Override
     public String toString() {
+
         if (elementData == null)
             return "null";
 
@@ -156,12 +157,13 @@ public class QueueImpl implements Queue {
 
         StringBuilder b = new StringBuilder();
         b.append('[');
-        for (int i = 0; ; i++) {
+        for (int i = 0; i < elementData.length; i++) {
             b.append(String.valueOf(elementData[i]));
             if (i == iMax)
                 return b.append("]").toString();
             b.append(", ");
         }
+        return b.toString();
     }
 
     @SuppressWarnings("all")
@@ -187,10 +189,8 @@ public class QueueImpl implements Queue {
             }
         }
         System.out.println();
-        System.out.println(array.toString());
         System.out.println(array.top());
         System.out.println(array.dequeue());
-        System.out.println(array.top());
         System.out.println(array.toString());
         array.clear();
         System.out.println(array.toString());

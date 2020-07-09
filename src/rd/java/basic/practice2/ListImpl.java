@@ -6,8 +6,8 @@ import java.util.NoSuchElementException;
 
 public class ListImpl implements List {
     private int size;
-    private Node<Object> first;
-    private Node<Object> last;
+    private Node first;
+    private Node last;
     private int modCount = 0;
 
     public ListImpl() {
@@ -18,28 +18,27 @@ public class ListImpl implements List {
         addLast(c);
     }
 
-    private static class Node<Object> {
+    private static class Node {
         Object item;
-        Node<Object> next;
-        Node<Object> prev;
+        Node next;
+        Node prev;
 
-        Node(Node<Object> prev, Object element, Node<Object> next) {
+        Node(Node prev, Object element, Node next) {
             this.item = element;
             this.next = next;
             this.prev = prev;
         }
     }
 
-    Node<Object> node(int index) {
-        // assert isElementIndex(index);
+    Node node(int index) {
 
         if (index < (size >> 1)) {
-            Node<Object> x = first;
+            Node x = first;
             for (int i = 0; i < index; i++)
                 x = x.next;
             return x;
         } else {
-            Node<Object> x = last;
+            Node x = last;
             for (int i = size - 1; i > index; i--)
                 x = x.prev;
             return x;
@@ -48,8 +47,8 @@ public class ListImpl implements List {
 
     @Override
     public void clear() {
-        for (Node<Object> x = first; x != null; ) {
-            Node<Object> next = x.next;
+        for (Node x = first; x != null; ) {
+            Node next = x.next;
             x.item = null;
             x.next = null;
             x.prev = null;
@@ -70,11 +69,11 @@ public class ListImpl implements List {
     }
 
     private class IteratorImpl implements Iterator<Object> {
-        private Node<Object> lastReturned;
-        private Node<Object> next;
+        private Node lastReturned;
+        private Node next;
         private int nextIndex;
 
-        public IteratorImpl (int index) {
+        public IteratorImpl(int index) {
             next = (index == size) ? null : node(index);
             nextIndex = index;
         }
@@ -95,11 +94,12 @@ public class ListImpl implements List {
             return lastReturned.item;
         }
 
+        @Override
         public void remove() {
             if (lastReturned == null)
                 throw new IllegalStateException();
 
-            Node<Object> lastNext = lastReturned.next;
+            Node lastNext = lastReturned.next;
             unlink(lastReturned);
             if (next == lastReturned)
                 next = lastNext;
@@ -112,8 +112,8 @@ public class ListImpl implements List {
 
     @Override
     public void addFirst(Object element) {
-        final Node<Object> f = first;
-        final Node<Object> newNode = new Node<>(null, element, f);
+        final Node f = first;
+        final Node newNode = new Node(null, element, f);
         first = newNode;
         if (f == null)
             last = newNode;
@@ -125,8 +125,8 @@ public class ListImpl implements List {
 
     @Override
     public void addLast(Object element) {
-        final Node<Object> l = last;
-        final Node<Object> newNode = new Node<>(l, element, null);
+        final Node l = last;
+        final Node newNode = new Node(l, element, null);
         last = newNode;
         if (l == null)
             first = newNode;
@@ -138,14 +138,13 @@ public class ListImpl implements List {
 
     @Override
     public void removeFirst() {
-        final Node<Object> f = first;
+        final Node f = first;
         if (f == null)
             throw new NoSuchElementException();
-        final Object element = f.item;
 
-        final Node<Object> next = f.next;
+        final Node next = f.next;
         f.item = null;
-        f.next = null; // help GC
+        f.next = null;
         first = next;
         if (next == null)
             last = null;
@@ -157,13 +156,12 @@ public class ListImpl implements List {
 
     @Override
     public void removeLast() {
-        final Node<Object> l = last;
+        final Node l = last;
         if (l == null)
             throw new NoSuchElementException();
-        final Object element = l.item;
-        final Node<Object> prev = l.prev;
+        final Node prev = l.prev;
         l.item = null;
-        l.prev = null; // help GC
+        l.prev = null;
         last = prev;
         if (prev == null)
             first = null;
@@ -175,43 +173,35 @@ public class ListImpl implements List {
 
     @Override
     public Object getFirst() {
-        final Node<Object> f = first;
+        final Node f = first;
         if (f == null)
-            throw new NoSuchElementException();
+            return null;;
         return f.item;
     }
 
     @Override
     public Object getLast() {
-        final Node<Object> l = last;
+        final Node l = last;
         if (l == null)
-            throw new NoSuchElementException();
+            return null;;
         return l.item;
     }
 
     @Override
     public Object search(Object element) {
         Object obj = null;
-        if (element == null) {
-            for (Node<Object> x = first; x != null; x = x.next) {
-                if (x.item == null)
-                    obj = null;
-            }
-        } else {
-            for (Node<Object> x = first; x != null; x = x.next) {
-                if (element.equals(x.item))
-                    obj = x.item;
-            }
+        for (Node x = first; x != null; x = x.next) {
+            if (element.equals(x.item))
+                obj = x.item;
         }
 
         return obj;
     }
 
-    private Object unlink(Node<Object> x) {
-        // assert x != null;
+    private Object unlink(Node x) {
         final Object element = x.item;
-        final Node<Object> next = x.next;
-        final Node<Object> prev = x.prev;
+        final Node next = x.next;
+        final Node prev = x.prev;
 
         if (prev == null) {
             first = next;
@@ -236,14 +226,14 @@ public class ListImpl implements List {
     @Override
     public boolean remove(Object element) {
         if (element == null) {
-            for (Node<Object> x = first; x != null; x = x.next) {
+            for (Node x = first; x != null; x = x.next) {
                 if (x.item == null) {
                     unlink(x);
                     return true;
                 }
             }
         } else {
-            for (Node<Object> x = first; x != null; x = x.next) {
+            for (Node x = first; x != null; x = x.next) {
                 if (element.equals(x.item)) {
                     unlink(x);
                     return true;
@@ -255,15 +245,17 @@ public class ListImpl implements List {
 
     @Override
     public String toString() {
-        String toString = "[";
+        StringBuilder str = new StringBuilder();
+        str.append("[");
         Iterator iterator = iterator();
         while (iterator.hasNext()) {
-            toString += iterator.next();
+            str.append(iterator.next());
             if (iterator.hasNext()) {
-                toString += ", ";
+                str.append(", ");
             }
         }
-        return toString + "]";
+        str.append("]");
+        return str.toString();
     }
 
     @SuppressWarnings("all")
