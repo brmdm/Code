@@ -50,20 +50,23 @@ public class StackImpl implements Stack {
     }
 
     private class IteratorImpl implements Iterator<Object> {
-        int cursor;       // index of next element to return
+        int cursor = size;       // index of next element to return
         int lastRet = -1; // index of last element returned; -1 if no such
         int expectedModCount = modCount;
 
         public boolean hasNext() {
-            return cursor != elementCount;
+            return cursor != 0;
         }
 
         public Object next() {
             synchronized (StackImpl.this) {
-                int i = cursor;
-                if (i >= elementCount)
+                int i = cursor - 1;
+                if (i < 0)
                     throw new NoSuchElementException();
-                cursor = i + 1;
+                Object[] elementData1 = StackImpl.this.elementData;
+                if (i >= elementData1.length)
+                    throw new NoSuchElementException();
+                cursor = i;
                 return elementData[lastRet = i];
                 }
         }
@@ -126,7 +129,7 @@ public class StackImpl implements Stack {
         Object obj;
         int len = size();
         if (len == 0)
-            return null;
+            return  null;
         obj = elementData[len - 1];
 
         elementData[len - 1] = null;
@@ -174,8 +177,8 @@ public class StackImpl implements Stack {
         array.push(str1);
         array.push(str2);
         array.push(str3);
-        System.out.println(array.size());
-
+//        System.out.println(array.size());
+        System.out.println(array.toString());
         Iterator iterator = array.iterator();
         while (iterator.hasNext()) {
             System.out.print(iterator.next());
@@ -183,15 +186,15 @@ public class StackImpl implements Stack {
                 System.out.print(" ");
             }
         }
-        System.out.println();
-        System.out.println(array.toString());
-        System.out.println(array.top());
-        System.out.println(array.pop());
-        System.out.println(array.pop());
-        System.out.println(array.top());
-        System.out.println(array.toString());
-        array.clear();
-        System.out.println(array.toString());
+//        System.out.println();
+//        System.out.println(array.toString());
+//        System.out.println(array.top());
+//        System.out.println(array.pop());
+//        System.out.println(array.pop());
+//        System.out.println(array.top());
+//        System.out.println(array.toString());
+//        array.clear();
+//        System.out.println(array.toString());
 
     }
 
