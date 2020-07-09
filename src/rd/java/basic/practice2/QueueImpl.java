@@ -139,7 +139,7 @@ public class QueueImpl implements Queue {
         Object obj;
         int len = size();
         if (len == 0)
-            throw new NoSuchElementException();
+            return null;
         obj = elementData[curs];
 
         return obj;
