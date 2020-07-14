@@ -18,7 +18,6 @@ public class Part1 {
         System.out.print(convert4(input));
     }
 
-
     public static String convert1(String input) {
         StringBuilder sb = new StringBuilder();
         Scanner read = new Scanner(input);
@@ -115,10 +114,10 @@ public class Part1 {
                 sb2.append(Login[i] + ", ");
             }
         }
-        sb1.deleteCharAt(sb1.length() - 1);
-        sb1.deleteCharAt(sb1.length() - 1);
-        sb2.deleteCharAt(sb2.length() - 1);
-        sb2.deleteCharAt(sb2.length() - 1);
+        for (int i = 0; i < 2; i++) {
+            sb1.deleteCharAt(sb1.length() - 1);
+            sb2.deleteCharAt(sb1.length() - 1);
+        }
         return sb1.toString() + "\r\n" + sb2.toString();
     }
 
