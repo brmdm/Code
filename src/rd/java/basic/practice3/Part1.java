@@ -21,7 +21,7 @@ public class Part1 {
     public static String convert1(String input) {
         StringBuilder sb = new StringBuilder();
         Scanner read = new Scanner(input);
-        read.useDelimiter("\\r\\n\\r\\n|;");
+        read.useDelimiter("\\r\\n|;");
         String[] Login = new String[50];
         String[] name = new String[50];
         String[] email = new String[50];
@@ -42,7 +42,7 @@ public class Part1 {
     public static String convert2(String input) {
         StringBuilder sb = new StringBuilder();
         Scanner read = new Scanner(input);
-        read.useDelimiter("\\r\\n\\r\\n|;");
+        read.useDelimiter("\\r\\n|;");
         String[] Login = new String[50];
         String[] name = new String[50];
         String[][] fullName = new String[50][2];
@@ -86,7 +86,7 @@ public class Part1 {
         StringBuilder sb1 = new StringBuilder("mail.com ==> ");
         StringBuilder sb2 = new StringBuilder("google.com ==> ");
         Scanner read = new Scanner(input);
-        read.useDelimiter("\\r\\n\\r\\n|;");
+        read.useDelimiter("\\r\\n|;");
         String[] Login = new String[50];
         String[] name = new String[50];
         String[] email = new String[50];
@@ -124,7 +124,7 @@ public class Part1 {
     public static String convert4(String input) {
         StringBuilder sb = new StringBuilder();
         Scanner read = new Scanner(input);
-        read.useDelimiter("\\r\\n\\r\\n");
+        read.useDelimiter("\\r\\n");
         String[] str1 = new String[50];
         for (int i = 0; read.hasNext(); i++) {
             str1[i] = read.next();

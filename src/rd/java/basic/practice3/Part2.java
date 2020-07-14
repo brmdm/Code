@@ -19,7 +19,7 @@ public class Part2 {
         int biggest = 1;
         int lowest = 2;
         int current = 1;
-        read.useDelimiter("\\r\\n\\r\\n|\\s|\\W");
+        read.useDelimiter("\\r\\n|\\s|\\W");
 
         for (int i = 0; read.hasNext(); i++) {
             word[i] = read.next();
