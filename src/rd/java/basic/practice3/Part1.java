@@ -116,7 +116,7 @@ public class Part1 {
         }
         for (int i = 0; i < 2; i++) {
             sb1.deleteCharAt(sb1.length() - 1);
-            sb2.deleteCharAt(sb1.length() - 1);
+            sb2.deleteCharAt(sb2.length() - 1);
         }
         return sb1.toString() + "\r\n" + sb2.toString();
     }
