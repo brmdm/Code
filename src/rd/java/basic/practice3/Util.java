@@ -21,7 +21,7 @@ public class Util {
     }
 
     public static void main(String[] args) {
-        String input = Util.getInput("part1.txt");
+        String input = Util.getInput("part6.txt");
         System.out.println(input);
     }
 }
