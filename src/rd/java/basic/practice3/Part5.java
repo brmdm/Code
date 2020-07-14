@@ -1,7 +1,7 @@
 package rd.java.basic.practice3;
 
 public class Part5 {
-
+    @SuppressWarnings("all")
     public static void main(String[] args) {
 
     }

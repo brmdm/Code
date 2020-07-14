@@ -3,7 +3,7 @@ package rd.java.basic.practice3;
 import java.security.*;
 
 public class Part4 {
-
+    @SuppressWarnings("all")
     public static void main(String[] args) throws NoSuchAlgorithmException  {
         System.out.println(hash("asdf", "MD5"));
         System.out.println(hash("asdf", "SHA-256"));
