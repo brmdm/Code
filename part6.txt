@@ -1,6 +1,6 @@
 This is a test
 And this is also a test
 And these are also tests
-test Р­С‚Рѕ С‚РµСЃС‚
-Р­С‚Рѕ С‚Р°РєР¶Рµ С‚РµСЃС‚
-Р СЌС‚Рѕ С‚Р°РєР¶Рµ С‚РµСЃС‚С‹
+test Это тест
+Это также тест
+И это также тесты
