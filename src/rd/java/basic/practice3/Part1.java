@@ -6,8 +6,9 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Part1 {
-    public static final String DELIMETR = "\\r\\n|;";
+    public static final String DELIMETR = "\\r\\n\\r\\n|;";
     private static Random ran;
+
     static {
         try {
             ran = SecureRandom.getInstanceStrong();
@@ -41,14 +42,12 @@ public class Part1 {
             for (int i = 0; read.hasNext(); i++) {
                 Login[i] = read.next();
                 name[i] = read.next();
-                if (read.hasNext()) {
-                    email[i] = read.next();
-                }
+                email[i] = read.next();
             }
         } finally {
             read.close();
         }
-        for (int j = 0; j < Login.length; j++) {
+        for (int j = 1; j < Login.length; j++) {
             if (Login[j] != null) {
                 sb.append(Login[j] + ": " + email[j] + "\n");
             }
@@ -85,7 +84,7 @@ public class Part1 {
                 break;
             }
         }
-        for (int j = 0; j < fullName.length; j++) {
+        for (int j = 1; j < fullName.length; j++) {
             if (fullName[j] != null) {
                 for (int k = 1; k > -1; k--) {
                     if (fullName[j][k] != null) {
@@ -137,7 +136,7 @@ public class Part1 {
                 break;
             }
         }
-        for (int i = 0; Login[i] != null; i++) {
+        for (int i = 1; Login[i] != null; i++) {
             if (fullEmail[i][1].equals(email1) || fullEmail[i][1].equals(email3)) {
                 sb1.append(Login[i] + ", ");
             } else if (fullEmail[i][1].equals(email2) || fullEmail[i][1].equals(email4)) {
@@ -154,14 +153,16 @@ public class Part1 {
     public static String convert4(String input) {
         StringBuilder sb = new StringBuilder();
         Scanner read = new Scanner(input);
-        read.useDelimiter("\\r\\n");
+        read.useDelimiter("\\r\\n\\r\\n");
         String[] str1 = new String[50];
         for (int i = 0; read.hasNext(); i++) {
             str1[i] = read.next();
         }
         for (int i = 0; i < str1.length; i++) {
-            if (str1[i] != null) {
-                    sb.append(str1[i] + "" + pass() + "\r\n");
+            if (i == 0) {
+                sb.append(str1[i] + ";Password" + "\r\n");
+            } else if (str1[i] != null) {
+                sb.append(str1[i] + "" + pass() + "\r\n");
             }
         }
         sb.deleteCharAt(sb.length() - 1);
