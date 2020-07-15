@@ -1,10 +1,23 @@
 package rd.java.basic.practice3;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Scanner;
 import java.util.Random;
 
 public class Part1 {
     public static final String DELIMETR = "\\r\\n|;";
+    private static Random ran;
+    static {
+        try {
+            ran = SecureRandom.getInstanceStrong();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Part1() throws NoSuchAlgorithmException {
+    }
 
     public static void main(String[] args) {
         String input = Util.getInput("part1.txt");
@@ -35,7 +48,7 @@ public class Part1 {
         } finally {
             read.close();
         }
-        for (int j = 1; j < Login.length; j++) {
+        for (int j = 0; j < Login.length; j++) {
             if (Login[j] != null) {
                 sb.append(Login[j] + ": " + email[j] + "\n");
             }
@@ -72,7 +85,7 @@ public class Part1 {
                 break;
             }
         }
-        for (int j = 1; j < fullName.length; j++) {
+        for (int j = 0; j < fullName.length; j++) {
             if (fullName[j] != null) {
                 for (int k = 1; k > -1; k--) {
                     if (fullName[j][k] != null) {
@@ -118,16 +131,16 @@ public class Part1 {
             read.close();
         }
         for (int i = 0; i < fullEmail.length; i++) {
-            if (fullEmail[i] != null && name[i] != null) {
+            if (fullEmail[i] != null && email[i] != null) {
                 fullEmail[i] = email[i].split("[@]");
             } else {
                 break;
             }
         }
-        for (int i = 1; Login[i] != null; i++) {
+        for (int i = 0; Login[i] != null; i++) {
             if (fullEmail[i][1].equals(email1) || fullEmail[i][1].equals(email3)) {
                 sb1.append(Login[i] + ", ");
-            } else if (fullEmail[i][1].intern() == email2 || fullEmail[i][1].intern() == email4) {
+            } else if (fullEmail[i][1].equals(email2) || fullEmail[i][1].equals(email4)) {
                 sb2.append(Login[i] + ", ");
             }
         }
@@ -148,11 +161,7 @@ public class Part1 {
         }
         for (int i = 0; i < str1.length; i++) {
             if (str1[i] != null) {
-                if (i == 0) {
-                    sb.append(str1[i] + ";Password" + "\r\n");
-                } else {
                     sb.append(str1[i] + "" + pass() + "\r\n");
-                }
             }
         }
         sb.deleteCharAt(sb.length() - 1);
@@ -160,14 +169,11 @@ public class Part1 {
     }
 
     private static String pass() {
-        Random ran = new Random();
-        int a1 = 0;
-        int a2 = 10;
         StringBuilder sb = new StringBuilder();
         int random_number1;
         sb.append(";");
         for (int i = 0; i < 4; i++) {
-            random_number1 = a1 + (ran.nextInt(10));
+            random_number1 = ran.nextInt(10);
             sb.append("" + random_number1);
         }
         return sb.toString();
