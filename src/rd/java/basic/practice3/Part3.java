@@ -14,25 +14,29 @@ public class Part3 {
         Scanner read = new Scanner(input);
         read.useDelimiter("\\s");
         String[] str1 = new String[100];
-        char[] word = new char[20];
+        char[] word;
 
-        for (int i = 0; read.hasNext(); i++) {
-            str1[i] = read.next();
+        try {
+            for (int i = 0; read.hasNext(); i++) {
+                str1[i] = read.next();
+            }
+        } finally {
+            read.close();
         }
 
-        for (int i = 0; str1[i] != null ; i++) {
+        for (int i = 0; str1[i] != null; i++) {
             word = str1[i].toCharArray();
             if (word.length >= 3) {
                 if (Character.isLowerCase(word[0])) {
                     word[0] = Character.toUpperCase(word[0]);
-                    for (int j = 0; j < word.length ; j++) {
+                    for (int j = 0; j < word.length; j++) {
                         sbchar.append(word[j]);
                     }
                     str1[i] = sbchar.toString();
                     sbchar.delete(0, sbchar.length());
                 } else {
                     word[0] = Character.toLowerCase(word[0]);
-                    for (int j = 0; j < word.length ; j++) {
+                    for (int j = 0; j < word.length; j++) {
                         sbchar.append(word[j]);
                     }
                     str1[i] = sbchar.toString();
@@ -41,11 +45,11 @@ public class Part3 {
             }
         }
 
-        for (int i = 0; str1[i] != null ; i++) {
+        for (int i = 0; str1[i] != null; i++) {
             sb.append(str1[i] + " ");
             if (str1[i].equals("Younger")) {
                 sb.deleteCharAt(sb.length() - 1);
-                sb.append("\r\n");
+                sb.append("\r\n\r\n");
             }
         }
 

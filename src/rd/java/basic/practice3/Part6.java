@@ -29,7 +29,7 @@ public class Part6 {
         for (int i = 0; str1[i] != null; i++) {
             for (int j = 0; str1[j] != null; j++) {
                 if (str1[i].equals(str1[j]) && i != j) {
-                    if (notContains(strDuplicate, str1[i]) && str1[i].equals("")) {
+                    if (notContains(strDuplicate, str1[i]) && !(str1[i].equals(""))) {
                         strDuplicate[strDuplicateCurrent] = str1[i];
                         strDuplicateCurrent++;
                     }
@@ -60,7 +60,7 @@ public class Part6 {
         for (int i = 0; str1[i] != null; i++) {
             if (str1[i].equals("")) {
                 sb.deleteCharAt(sb.length() - 1);
-                sb.append("\r\n\r\n");
+                sb.append("\n\n");
             } else {
                 sb.append(str1[i] + " ");
             }
