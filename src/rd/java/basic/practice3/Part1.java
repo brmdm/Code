@@ -3,19 +3,16 @@ package rd.java.basic.practice3;
 import java.util.Scanner;
 
 public class Part1 {
-    @SuppressWarnings("all")
     public static void main(String[] args) {
         String input = Util.getInput("part1.txt");
-        System.out.print(convert1(input));
-        System.out.println();
-        System.out.println("-----------------");
-        System.out.print(convert2(input));
-        System.out.println();
-        System.out.println("-----------------");
-        System.out.print(convert3(input));
-        System.out.println();
-        System.out.println("-----------------");
-        System.out.print(convert4(input));
+//        System.out.print(convert1(input));
+//        System.out.println();
+//        System.out.print(convert2(input));
+//        System.out.println();
+//        System.out.print(convert3(input));
+//        System.out.println();
+//        System.out.print(convert4(input));
+        System.out.println(pass());
     }
 
     public static String convert1(String input) {
@@ -71,7 +68,7 @@ public class Part1 {
                 if (email[j] != null) {
                     sb.append("(email:" + email[j]);
                     sb.deleteCharAt(sb.length() - 1);
-                    if (sb.charAt(sb.length()-1) == 'o') {
+                    if (sb.charAt(sb.length() - 1) == 'o') {
                         sb.append("m");
                     }
                     sb.append(")\n");
@@ -108,7 +105,7 @@ public class Part1 {
             }
         }
         for (int i = 1; Login[i] != null; i++) {
-            if (fullEmail[i][1].intern() == email1 || fullEmail[i][1].intern() == email3) {
+            if (fullEmail[i][1].equals(email1) || fullEmail[i][1].equals(email3)) {
                 sb1.append(Login[i] + ", ");
             } else if (fullEmail[i][1].intern() == email2 || fullEmail[i][1].intern() == email4) {
                 sb2.append(Login[i] + ", ");
@@ -134,7 +131,7 @@ public class Part1 {
                 if (i == 0) {
                     sb.append(str1[i] + ";Password" + "\r\n");
                 } else {
-                    sb.append(str1[i] + "" + pass()  + "\r\n");
+                    sb.append(str1[i] + ";" + pass() + "\r\n");
                 }
             }
         }
@@ -142,12 +139,11 @@ public class Part1 {
         return sb.toString();
     }
 
-    private static String pass () {
+    private static String pass() {
         int a1 = 0;
         int a2 = 10;
         StringBuilder sb = new StringBuilder();
         int random_number1;
-        sb.append(";");
         for (int i = 0; i < 4; i++) {
             random_number1 = a1 + (int) (Math.random() * a2);
             sb.append("" + random_number1);

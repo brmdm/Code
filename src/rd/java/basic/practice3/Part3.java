@@ -3,7 +3,6 @@ package rd.java.basic.practice3;
 import java.util.Scanner;
 
 public class Part3 {
-    @SuppressWarnings("all")
     public static void main(String[] args) {
         String input = Util.getInput("part3.txt");
         System.out.print(convert(input));
@@ -44,6 +43,10 @@ public class Part3 {
 
         for (int i = 0; str1[i] != null ; i++) {
             sb.append(str1[i] + " ");
+            if (str1[i].equals("Younger")) {
+                sb.deleteCharAt(sb.length() - 1);
+                sb.append("\r\n");
+            }
         }
 
         sb.deleteCharAt(sb.length() - 1);

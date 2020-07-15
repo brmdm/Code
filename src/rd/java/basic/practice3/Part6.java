@@ -3,7 +3,6 @@ package rd.java.basic.practice3;
 import java.util.Scanner;
 
 public class Part6 {
-    @SuppressWarnings("all")
     public static void main(String[] args) {
         String input = Util.getInput("part6.txt");
         System.out.print(convert(input));
@@ -17,23 +16,26 @@ public class Part6 {
         String[] str1 = new String[100];
         String[] strDuplicate = new String[100];
         int strDuplicateCurrent = 0;
-        char[] word = new char[20];
-        for (int i = 0; read.hasNext(); i++) {
-            str1[i] = read.next();
+        char[] word;
+
+        try {
+            for (int i = 0; read.hasNext(); i++) {
+                str1[i] = read.next();
+            }
+        } finally {
+            read.close();
         }
 
         for (int i = 0; str1[i] != null; i++) {
             for (int j = 0; str1[j] != null; j++) {
                 if (str1[i].equals(str1[j]) && i != j) {
-                    if (notContains(strDuplicate, str1[i]) && str1[i].intern() != "") {
+                    if (notContains(strDuplicate, str1[i]) && str1[i].equals("")) {
                         strDuplicate[strDuplicateCurrent] = str1[i];
                         strDuplicateCurrent++;
                     }
                 }
             }
         }
-
-
 
 
         for (int i = 0; str1[i] != null; i++) {
@@ -56,9 +58,9 @@ public class Part6 {
 
 
         for (int i = 0; str1[i] != null; i++) {
-            if (str1[i].intern() == "") {
+            if (str1[i].equals("")) {
                 sb.deleteCharAt(sb.length() - 1);
-                sb.append("\r\n");
+                sb.append("\r\n\r\n");
             } else {
                 sb.append(str1[i] + " ");
             }

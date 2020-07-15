@@ -3,7 +3,6 @@ package rd.java.basic.practice3;
 import java.util.Scanner;
 
 public class Part2 {
-    @SuppressWarnings("all")
     public static void main(String[] args) {
         String input = Util.getInput("part2.txt");
         System.out.print(convert(input));

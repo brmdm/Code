@@ -3,7 +3,6 @@ package rd.java.basic.practice3;
 public class Part5 {
     public static final String ARROW = " --> ";
 
-    @SuppressWarnings("all")
     public static void main(String[] args) {
         for (int i = 1; i <= 100; i++) {
             System.out.print(i + ARROW + decimal2Roman(i) + ARROW + roman2Decimal(decimal2Roman(i)));
@@ -65,6 +64,8 @@ public class Part5 {
                 case 'M':
                     previousnum = num;
                     num = 1000;
+                    break;
+                default:
                     break;
             }
             if (num < previousnum) {

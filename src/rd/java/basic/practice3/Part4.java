@@ -3,7 +3,6 @@ package rd.java.basic.practice3;
 import java.security.*;
 
 public class Part4 {
-    @SuppressWarnings("all")
     public static void main(String[] args) throws NoSuchAlgorithmException  {
         System.out.println(hash("asdf", "MD5"));
         System.out.println(hash("asdf", "SHA-256"));
@@ -11,7 +10,7 @@ public class Part4 {
     }
 
     public static String hash(String input, String algorithm) throws NoSuchAlgorithmException  {
-        StringBuffer hexString = new StringBuffer();
+        StringBuilder hexString = new StringBuilder();
         MessageDigest digest = MessageDigest.getInstance(algorithm);
         digest.update(input.getBytes());
         byte[] dig = digest.digest();
