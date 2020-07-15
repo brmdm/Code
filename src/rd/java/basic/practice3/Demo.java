@@ -1,6 +1,5 @@
 package rd.java.basic.practice3;
 
-
 import java.security.NoSuchAlgorithmException;
 
 public class Demo {
