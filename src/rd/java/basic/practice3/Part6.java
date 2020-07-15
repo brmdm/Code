@@ -60,7 +60,7 @@ public class Part6 {
         for (int i = 0; str1[i] != null; i++) {
             if (str1[i].equals("")) {
                 sb.deleteCharAt(sb.length() - 1);
-                sb.append("\n\n");
+                sb.append("\n");
             } else {
                 sb.append(str1[i] + " ");
             }

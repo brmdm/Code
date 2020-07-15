@@ -49,7 +49,7 @@ public class Part3 {
             sb.append(str1[i] + " ");
             if (str1[i].equals("Younger")) {
                 sb.deleteCharAt(sb.length() - 1);
-                sb.append("\r\n\r\n");
+                sb.append("\n");
             }
         }
 
