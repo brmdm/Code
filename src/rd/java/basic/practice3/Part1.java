@@ -1,31 +1,39 @@
 package rd.java.basic.practice3;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Part1 {
+    public static final String DELIMETR = "\\r\\n|;";
+
     public static void main(String[] args) {
         String input = Util.getInput("part1.txt");
-//        System.out.print(convert1(input));
-//        System.out.println();
-//        System.out.print(convert2(input));
-//        System.out.println();
-//        System.out.print(convert3(input));
-//        System.out.println();
-//        System.out.print(convert4(input));
-        System.out.println(pass());
+        System.out.print(convert1(input));
+        System.out.println();
+        System.out.print(convert2(input));
+        System.out.println();
+        System.out.print(convert3(input));
+        System.out.println();
+        System.out.print(convert4(input));
     }
 
     public static String convert1(String input) {
         StringBuilder sb = new StringBuilder();
         Scanner read = new Scanner(input);
-        read.useDelimiter("\\r\\n|;");
+        read.useDelimiter(DELIMETR);
         String[] Login = new String[50];
         String[] name = new String[50];
         String[] email = new String[50];
-        for (int i = 0; read.hasNext(); i++) {
-            Login[i] = read.next();
-            name[i] = read.next();
-            email[i] = read.next();
+        try {
+            for (int i = 0; read.hasNext(); i++) {
+                Login[i] = read.next();
+                name[i] = read.next();
+                if (read.hasNext()) {
+                    email[i] = read.next();
+                }
+            }
+        } finally {
+            read.close();
         }
         for (int j = 1; j < Login.length; j++) {
             if (Login[j] != null) {
@@ -39,17 +47,23 @@ public class Part1 {
     public static String convert2(String input) {
         StringBuilder sb = new StringBuilder();
         Scanner read = new Scanner(input);
-        read.useDelimiter("\\r\\n|;");
+        read.useDelimiter(DELIMETR);
         String[] Login = new String[50];
         String[] name = new String[50];
         String[][] fullName = new String[50][2];
         String[] email = new String[50];
         int i = 0;
-        while (read.hasNext()) {
-            Login[i] = read.next();
-            name[i] = read.next();
-            email[i] = read.next();
-            i++;
+        try {
+            while (read.hasNext()) {
+                Login[i] = read.next();
+                name[i] = read.next();
+                if (read.hasNext()) {
+                    email[i] = read.next();
+                }
+                i++;
+            }
+        } finally {
+            read.close();
         }
         for (int j = 0; j < fullName.length; j++) {
             if (fullName[j] != null && name[j] != null) {
@@ -83,7 +97,7 @@ public class Part1 {
         StringBuilder sb1 = new StringBuilder("mail.com ==> ");
         StringBuilder sb2 = new StringBuilder("google.com ==> ");
         Scanner read = new Scanner(input);
-        read.useDelimiter("\\r\\n|;");
+        read.useDelimiter(DELIMETR);
         String[] Login = new String[50];
         String[] name = new String[50];
         String[] email = new String[50];
@@ -92,10 +106,16 @@ public class Part1 {
         String email2 = "google.com\r";
         String email3 = "mail.com";
         String email4 = "google.com";
-        for (int i = 0; read.hasNext(); i++) {
-            Login[i] = read.next();
-            name[i] = read.next();
-            email[i] = read.next();
+        try {
+            for (int i = 0; read.hasNext(); i++) {
+                Login[i] = read.next();
+                name[i] = read.next();
+                if (read.hasNext()) {
+                    email[i] = read.next();
+                }
+            }
+        } finally {
+            read.close();
         }
         for (int i = 0; i < fullEmail.length; i++) {
             if (fullEmail[i] != null && name[i] != null) {
@@ -131,7 +151,7 @@ public class Part1 {
                 if (i == 0) {
                     sb.append(str1[i] + ";Password" + "\r\n");
                 } else {
-                    sb.append(str1[i] + ";" + pass() + "\r\n");
+                    sb.append(str1[i] + "" + pass() + "\r\n");
                 }
             }
         }
@@ -140,12 +160,14 @@ public class Part1 {
     }
 
     private static String pass() {
+        Random ran = new Random();
         int a1 = 0;
         int a2 = 10;
         StringBuilder sb = new StringBuilder();
         int random_number1;
+        sb.append(";");
         for (int i = 0; i < 4; i++) {
-            random_number1 = a1 + (int) (Math.random() * a2);
+            random_number1 = a1 + (ran.nextInt(10));
             sb.append("" + random_number1);
         }
         return sb.toString();
