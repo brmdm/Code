@@ -16,19 +16,23 @@ public class Part2 {
         String[] biggestWord = new String[200];
         String[] lowestWord = new String[200];
         int biggest = 1;
-        int lowest = 2;
+        int lowest = 3;
         int current = 1;
         read.useDelimiter("\\r\\n|\\s|\\W");
 
-        for (int i = 0; read.hasNext(); i++) {
-            word[i] = read.next();
-            current = word[i].toCharArray().length;
-            if (current > biggest) {
-                biggest = current;
+        try {
+            for (int i = 0; read.hasNext(); i++) {
+                word[i] = read.next();
+                current = word[i].toCharArray().length;
+                if (current > biggest) {
+                    biggest = current;
+                }
+                if (current < lowest && current != 0) {
+                    lowest = current;
+                }
             }
-            if (current < lowest && current != 0) {
-                lowest = current;
-            }
+        } finally {
+            read.close();
         }
         int calc1 = 0;
         int calc2 = 0;
