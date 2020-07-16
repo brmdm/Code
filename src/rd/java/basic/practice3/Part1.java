@@ -10,11 +10,11 @@ public class Part1 {
         String input = Util.getInput("part1.txt");
 //        System.out.print(convert1(input));
 //        System.out.println();
-//        System.out.print(convert2(input));
+        System.out.print(convert2(input));
 //        System.out.println();
 //        System.out.print(convert3(input));
 //        System.out.println();
-        System.out.print(convert4(input));
+//        System.out.print(convert4(input));
     }
 
     public static String convert1(String input) {

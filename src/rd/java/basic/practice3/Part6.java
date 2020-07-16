@@ -27,13 +27,15 @@ public class Part6 {
             read.close();
         }
 
+        boolean if1;
+        boolean if2;
         for (int i = 0; str1[i] != null; i++) {
             for (int j = 0; str1[j] != null; j++) {
-                if (str1[i].equals(str1[j]) && i != j) {
-                    if (notContains(strDuplicate, str1[i]) && !(str1[i].equals(""))) {
-                        strDuplicate[strDuplicateCurrent] = str1[i];
-                        strDuplicateCurrent++;
-                    }
+                if1 = str1[i].equals(str1[j]) && i != j;
+                if2 = notContains(strDuplicate, str1[i]) && !(str1[i].equals(""));
+                if (if1 && if2) {
+                    strDuplicate[strDuplicateCurrent] = str1[i];
+                    strDuplicateCurrent++;
                 }
             }
         }
@@ -55,7 +57,7 @@ public class Part6 {
                     words[j] = ch(words[j]);
                 }
             }
-            for (int j = 0; j < words.length ; j++) {
+            for (int j = 0; j < words.length; j++) {
                 sbs.append(words[j] + " ");
             }
             sbs.deleteCharAt(sbs.length() - 1);
