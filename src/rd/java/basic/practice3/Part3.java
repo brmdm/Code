@@ -26,22 +26,20 @@ public class Part3 {
 
         for (int i = 0; str1[i] != null; i++) {
             word = str1[i].toCharArray();
-            if (word.length >= 3) {
-                if (Character.isLowerCase(word[0])) {
-                    word[0] = Character.toUpperCase(word[0]);
-                    for (int j = 0; j < word.length; j++) {
-                        sbchar.append(word[j]);
-                    }
-                    str1[i] = sbchar.toString();
-                    sbchar.delete(0, sbchar.length());
-                } else {
-                    word[0] = Character.toLowerCase(word[0]);
-                    for (int j = 0; j < word.length; j++) {
-                        sbchar.append(word[j]);
-                    }
-                    str1[i] = sbchar.toString();
-                    sbchar.delete(0, sbchar.length());
+            if (word.length >= 3 && Character.isLowerCase(word[0])) {
+                word[0] = Character.toUpperCase(word[0]);
+                for (int j = 0; j < word.length; j++) {
+                    sbchar.append(word[j]);
                 }
+                str1[i] = sbchar.toString();
+                sbchar.delete(0, sbchar.length());
+            } else if (word.length >= 3) {
+                word[0] = Character.toLowerCase(word[0]);
+                for (int j = 0; j < word.length; j++) {
+                    sbchar.append(word[j]);
+                }
+                str1[i] = sbchar.toString();
+                sbchar.delete(0, sbchar.length());
             }
         }
 
