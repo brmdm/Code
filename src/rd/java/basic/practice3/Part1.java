@@ -1,5 +1,6 @@
 package rd.java.basic.practice3;
 
+import java.security.SecureRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -7,12 +8,12 @@ public class Part1 {
 
     public static void main(String[] args) {
         String input = Util.getInput("part1.txt");
-        System.out.print(convert1(input));
-        System.out.println();
-        System.out.print(convert2(input));
-        System.out.println();
-        System.out.print(convert3(input));
-        System.out.println();
+//        System.out.print(convert1(input));
+//        System.out.println();
+//        System.out.print(convert2(input));
+//        System.out.println();
+//        System.out.print(convert3(input));
+//        System.out.println();
         System.out.print(convert4(input));
     }
 
@@ -177,13 +178,12 @@ public class Part1 {
     }
 
     private static String pass () {
-        int a1 = 0;
-        int a2 = 10;
         StringBuilder sb = new StringBuilder();
         int randomnumber;
         sb.append(";");
+        SecureRandom random = new SecureRandom();
         for (int i = 0; i < 4; i++) {
-            randomnumber = a1 + (int) (Math.random() * a2);
+            randomnumber = random.nextInt(10);
             sb.append("" + randomnumber);
         }
         return sb.toString();
