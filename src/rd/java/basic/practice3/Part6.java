@@ -73,7 +73,7 @@ public class Part6 {
 
     private static boolean notContains(String[] words, String word) {
         for (int i = 0; words[i] != null; i++) {
-            if (words[i].equalsIgnoreCase(word)) {
+            if (words[i].equals(word)) {
                 return false;
             }
         }
