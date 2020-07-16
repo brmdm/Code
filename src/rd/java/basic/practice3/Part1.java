@@ -72,7 +72,7 @@ public class Part1 {
         for (int i = 0; str[i] != null; i++) {
             splitter = str[i].split(";");
             login[i] = splitter[0];
-            name[i] = splitter[1];;
+            name[i] = splitter[1];
             email[i] = splitter[2];
         }
         for (int j = 0; j < fullName.length; j++) {
