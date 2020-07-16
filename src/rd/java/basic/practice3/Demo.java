@@ -1,9 +1,10 @@
 package rd.java.basic.practice3;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Demo {
-    @SuppressWarnings("all")
     public static void main(String[] args) {
         //Part1
         String input = Util.getInput("part1.txt");
@@ -21,12 +22,14 @@ public class Demo {
         String input3 = Util.getInput("part3.txt");
         System.out.println(Part3.convert(input3));
         //Part4
+        Logger logger = Logger.getLogger(Demo.class.getName());
         try {
             System.out.println(Part4.hash("asdf", "SHA-512"));
             System.out.println(Part4.hash("asdf", "MD5"));
             System.out.println(Part4.hash("asdf", "SHA-256"));
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            String message = "Unexpected Exception";
+            logger.log(Level.ALL, message, e);
         }
         //Part5
         for (int i = 1; i <= 100; i++) {
