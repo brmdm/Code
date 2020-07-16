@@ -1,6 +1,8 @@
 package rd.java.basic.practice3;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Part6 {
     public static void main(String[] args) {
@@ -10,13 +12,12 @@ public class Part6 {
 
     public static String convert(String input) {
         StringBuilder sb = new StringBuilder();
-        StringBuilder sbchar = new StringBuilder();
+        StringBuilder sbs = new StringBuilder();
         Scanner read = new Scanner(input);
         read.useDelimiter("\\s");
         String[] str1 = new String[100];
         String[] strDuplicate = new String[100];
         int strDuplicateCurrent = 0;
-        char[] word;
 
         try {
             for (int i = 0; read.hasNext(); i++) {
@@ -37,34 +38,35 @@ public class Part6 {
             }
         }
 
-
-        for (int i = 0; str1[i] != null; i++) {
-            for (int j = 0; strDuplicate[j] != null; j++) {
-
-                if (str1[i].equals(strDuplicate[j])) {
-                    word = str1[i].toCharArray();
-
-                    for (int k = 0; k < word.length; k++) {
-                        if (k == 0) {
-                            sbchar.append("_");
-                        }
-                        sbchar.append(word[k]);
-                    }
-                    str1[i] = sbchar.toString();
-                    sbchar.delete(0, sbchar.length());
+        final String regex = "^.*$";
+        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE | Pattern.UNICODE_CHARACTER_CLASS);
+        final Matcher matcher = pattern.matcher(input);
+        String[] str = new String[50];
+        int count = 0;
+        while (matcher.find()) {
+            str[count] = input.substring(matcher.start(), matcher.end());
+            count++;
+        }
+        String[] words;
+        for (int i = 0; str[i] != null; i++) {
+            words = str[i].split(" ");
+            for (int j = 0; j < words.length; j++) {
+                if (!notContains(strDuplicate, words[j])) {
+                    words[j] = ch(words[j]);
                 }
             }
-        }
-
-
-        for (int i = 0; str1[i] != null; i++) {
-            if (str1[i].equals("\n")) {
-                sb.deleteCharAt(sb.length() - 1);
-                sb.append('\n');
-            } else {
-                sb.append(str1[i] + " ");
+            for (int j = 0; j < words.length ; j++) {
+                sbs.append(words[j] + " ");
             }
+            sbs.deleteCharAt(sbs.length() - 1);
+            str[i] = sbs.toString();
+            sbs.delete(0, sbs.length());
         }
+
+        for (int i = 0; str[i] != null; i++) {
+            sb.append(str[i] + "\n");
+        }
+
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
@@ -76,5 +78,19 @@ public class Part6 {
             }
         }
         return true;
+    }
+
+    private static String ch(String str1) {
+        StringBuilder sbchar = new StringBuilder();
+        char[] word;
+        word = str1.toCharArray();
+
+        for (int k = 0; k < word.length; k++) {
+            if (k == 0) {
+                sbchar.append("_");
+            }
+            sbchar.append(word[k]);
+        }
+        return sbchar.toString();
     }
 }
