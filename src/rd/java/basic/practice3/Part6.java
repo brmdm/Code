@@ -58,7 +58,7 @@ public class Part6 {
 
 
         for (int i = 0; str1[i] != null; i++) {
-            if (str1[i].equals("")) {
+            if (str1[i].equals("\n")) {
                 sb.deleteCharAt(sb.length() - 1);
                 sb.append('\n');
             } else {
