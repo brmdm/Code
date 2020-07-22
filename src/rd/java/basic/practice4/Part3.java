@@ -18,36 +18,46 @@ public class Part3 {
         Matcher doubleMatcher;
         StringBuilder sb = new StringBuilder();
 
+        int i;
         String str;
+        char c;
+        double d;
+
         Scanner read = new Scanner(input);
         read.useDelimiter("\\s");
         try {
             while (read.hasNext()) {
 
                 if (read.hasNextInt()) {
-                    System.out.println("int: " + read.nextInt());
+                    i = read.nextInt();
+                    sb.append(i);
                 } else if (read.hasNextDouble()) {
-                    System.out.println("double: " + read.nextDouble());
+                    d = read.nextDouble();
+                    sb.append(d);
                 } else {
                     str = read.next();
                     char[] ch = str.toCharArray();
                     doubleMatcher = doublePattern.matcher(str);
                     if (str.length() == 1) {
-                        System.out.println("char: " + str);
+                        c = ch[0];
+                        sb.append(c);
                     } else if (doubleMatcher.find()) {
-                        System.out.println("double: " + str);
+                        d = Double.parseDouble(str);
+                        sb.append(d);
                     } else if (str.equals("stop")) {
                         break;
                     } else {
-                        System.out.println("String: " + str);
+                        sb.append(str);
                     }
                 }
-
+                sb.append(" ");
             }
         } finally {
             read.close();
         }
 
+        sb.deleteCharAt(sb.length() - 1);
+        System.out.print(sb.toString());
 
     }
 
