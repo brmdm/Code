@@ -64,7 +64,7 @@ public class Part1 {
 
 
     public static void main(String[] args) {
-        String input = getInput("part11.txt");
+        String input = getInput("part1.txt");
 
         System.out.print(delChar(input));
     }
