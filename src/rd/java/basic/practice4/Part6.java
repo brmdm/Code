@@ -19,11 +19,13 @@ public class Part6 {
         final String latnRegex = "[a-zA-Z]+";
         final Pattern latnPattern = Pattern.compile(latnRegex, Pattern.MULTILINE | Pattern.UNICODE_CHARACTER_CLASS);
         final Matcher latnMatcher = latnPattern.matcher(input);
+        String [] cyrl = new String [50];
 
-        final String cyrlRegex = "[à-ÿÀ-ß¿¯¸¨³²ºª]+";
-        final Pattern cyrlPattern = Pattern.compile(cyrlRegex, Pattern.MULTILINE | Pattern.UNICODE_CHARACTER_CLASS);
+        final String cyrlRegex = "[^a-zA-Z\r\n. -]+";
+        final Pattern cyrlPattern = Pattern.compile(cyrlRegex, Pattern.MULTILINE | Pattern.UNICODE_CHARACTER_CLASS
+                | Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
         final Matcher cyrlMatcher = cyrlPattern.matcher(input);
-        Scanner read = new Scanner(input);
+
 
         while (latnMatcher.find()) {
             sbLatn.append(input.substring(latnMatcher.start(), latnMatcher.end()));
