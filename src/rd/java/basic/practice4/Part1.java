@@ -1,6 +1,5 @@
 package rd.java.basic.practice4;
 
-import rd.java.basic.practice3.Util;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Part1 {
     private static String getInput(String fileName) {
-        Logger logger = Logger.getLogger(Util.class.getName());
+        Logger logger = Logger.getLogger(Part1.class.getName());
         StringBuilder sb = new StringBuilder();
         try {
             Scanner scanner = new Scanner(new File(fileName), "cp1251");

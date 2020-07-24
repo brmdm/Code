@@ -9,9 +9,8 @@ import java.util.Scanner;
 public class Part5 {
     private InputStream inputStream;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         boolean repeat = true;
-        String locale = null;
         Part5 obj = new Part5();
 
 
@@ -25,10 +24,18 @@ public class Part5 {
                     repeat = false;
                     break;
                 case "en":
+                    try {
                     System.out.println(obj.getEnPropValues(s[0]));
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     break;
                 case "ru":
-                    System.out.println(obj.getRuPropValues(s[0]));
+                    try {
+                        System.out.println(obj.getRuPropValues(s[0]));
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     break;
                 default:
                     System.out.println("Invalid input");

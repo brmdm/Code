@@ -1,7 +1,5 @@
 package rd.java.basic.practice4;
 
-import rd.java.basic.practice3.Util;
-
 import java.io.*;
 import java.security.SecureRandom;
 import java.util.Scanner;
@@ -10,7 +8,7 @@ import java.util.logging.Logger;
 
 public class Part2 {
     public static void main(String[] args) {
-        Logger logger = Logger.getLogger(Util.class.getName());
+        Logger logger = Logger.getLogger(Part2.class.getName());
         StringBuilder sb1 = new StringBuilder("input ==> ");
         StringBuilder sb2 = new StringBuilder("output ==> ");
         File inputFile = new File("part2.txt");
@@ -89,7 +87,7 @@ public class Part2 {
     }
 
     private static String getInput(String fileName) {
-        Logger logger = Logger.getLogger(Util.class.getName());
+        Logger logger = Logger.getLogger(Part2.class.getName());
         StringBuilder sb = new StringBuilder();
         try {
             Scanner scanner = new Scanner(new File(fileName), "cp1251");
