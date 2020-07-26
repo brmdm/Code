@@ -1,1 +1,5 @@
-Create a class that displays the content of the text file to console, deleting the first two characters of each word with the length of more than 4 characters
+When I was younger
+So much younger
+than day
+информацию из файла
+в верхний регистр

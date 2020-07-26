@@ -146,7 +146,7 @@ public class Part4 implements Iterable<String> {
 
         Iterator iterator = array.iterator();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next() + "\n");
+            System.out.print(iterator.next() + "\n");
         }
     }
 }
