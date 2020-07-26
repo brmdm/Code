@@ -13,7 +13,7 @@ public class Part6 {
         StringBuilder sbLatn = new StringBuilder("Latn: ");
         StringBuilder sbCyrl = new StringBuilder("Cyrl: ");
         boolean repeat = true;
-        String input = getInput("part6.txt");
+        String input = getInput6("part6.txt");
         final String latnRegex = "[a-zA-Z]+";
         final Pattern latnPattern = Pattern.compile(latnRegex, Pattern.MULTILINE | Pattern.UNICODE_CHARACTER_CLASS);
         final Matcher latnMatcher = latnPattern.matcher(input);
@@ -54,20 +54,20 @@ public class Part6 {
         }
     }
 
-    private static String getInput(String fileName) {
-        Logger logger = Logger.getLogger(Part6.class.getName());
-        StringBuilder sb = new StringBuilder();
+    private static String getInput6(String fileName) {
+        Logger logger6 = Logger.getLogger(Part6.class.getName());
+        StringBuilder sb6 = new StringBuilder();
         try {
-            Scanner scanner = new Scanner(new File(fileName), "cp1251");
-            while (scanner.hasNextLine()) {
-                sb.append(scanner.nextLine()).append(System.lineSeparator());
+            Scanner scanner6 = new Scanner(new File(fileName), "cp1251");
+            while (scanner6.hasNextLine()) {
+                sb6.append(scanner6.nextLine()).append(System.lineSeparator());
             }
-            scanner.close();
-            return sb.toString().trim();
+            scanner6.close();
+            return sb6.toString().trim();
         } catch (IOException ex) {
-            String message = "Unexpected Exception";
-            logger.log(Level.ALL, message, ex);
+            String message6 = "Unexpected Exception";
+            logger6.log(Level.ALL, message6, ex);
         }
-        return sb.toString();
+        return sb6.toString();
     }
 }
