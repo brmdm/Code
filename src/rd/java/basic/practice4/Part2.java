@@ -17,7 +17,7 @@ public class Part2 {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile));){
             writer.write(input);
         } catch (IOException e) {
-            String message = "Unexpected Exception";
+            String message = "Unexpected Exception in main method";
             logger.log(Level.ALL, message, e);
         }
 
@@ -26,7 +26,7 @@ public class Part2 {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));){
             writer.write(output);
         } catch (Exception e) {
-            String message = "Unexpected Exception";
+            String message = "Unexpected Exception with Buffered Reader";
             logger.log(Level.ALL, message, e);
         }
 
@@ -34,7 +34,7 @@ public class Part2 {
         sb1.append(input);
         sb2.append(output);
         System.out.println(sb1.toString());
-        System.out.print(sb2.toString());
+        System.out.println(sb2.toString());
     }
 
 
@@ -97,7 +97,7 @@ public class Part2 {
             scanner.close();
             return sb.toString().trim();
         } catch (IOException ex) {
-            String message = "Unexpected Exception";
+            String message = "Unexpected Exception with input method";
             logger.log(Level.ALL, message, ex);
         }
         return sb.toString();
