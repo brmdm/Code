@@ -33,10 +33,6 @@ public class Part6 {
             sbCyrl.append(" ");
         }
 
-        sbCyrl.deleteCharAt(sbCyrl.length() - 1);
-        sbLatn.deleteCharAt(sbLatn.length() - 1);
-
-
         Scanner console = new Scanner(System.in);
         while (repeat) {
             switch (console.nextLine()) {
