@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Part5 {
     private InputStream inputStream;
@@ -47,6 +49,7 @@ public class Part5 {
     }
 
     private String getEnPropValues(String key) throws IOException {
+        Logger logger5 = Logger.getLogger(Part6.class.getName());
         String result = "";
         try {
             Properties prop = new Properties();
@@ -60,12 +63,14 @@ public class Part5 {
 
             result = prop.getProperty(key);
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            String message5 = "Exception: " + e;
+            logger5.log(Level.ALL, message5, e);
         }
         return result;
     }
 
     private String getRuPropValues(String key) throws IOException {
+        Logger logger5 = Logger.getLogger(Part6.class.getName());
         String result = "";
         try {
             Properties prop = new Properties();
@@ -79,7 +84,8 @@ public class Part5 {
 
             result = prop.getProperty(key);
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            String message5 = "Exception: " + e;
+            logger5.log(Level.ALL, message5, e);
         }
         return result;
     }
