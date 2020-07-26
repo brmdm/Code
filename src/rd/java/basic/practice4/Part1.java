@@ -26,7 +26,6 @@ public class Part1 {
 
     private static String delChar2 (String input) {
         StringBuilder sb = new StringBuilder();
-        StringBuilder sbchar = new StringBuilder();
         Scanner read = new Scanner(input);
         read.useDelimiter("\\n");
         String[] str1 = new String[100];
