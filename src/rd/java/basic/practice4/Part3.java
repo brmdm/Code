@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 public class Part3 {
     private static StringBuilder sb2 = new StringBuilder();
+
     public static void main(String[] args) {
         String input = getInput("part3.txt");
         final String doubleRegex = "[\\d]*[.][\\d]*";
@@ -19,19 +20,19 @@ public class Part3 {
         boolean repeat = true;
 
         int i;
-        int [] integ = new int[50];
+        int[] integ = new int[50];
         int intcoun = 0;
 
         String str;
-        String [] str1 = new String [50];
+        String[] str1 = new String[50];
         int strcoun = 0;
 
         char c;
-        char [] chars = new char[50];
+        char[] chars = new char[50];
         int charcounter = 0;
 
         double d;
-        double [] doubles = new double[50];
+        double[] doubles = new double[50];
         int doublecounter = 0;
 
         Scanner read = new Scanner(input);
@@ -101,7 +102,16 @@ public class Part3 {
                     break;
                 case "double":
                     for (int i1 = 0; doubles[i1] != 0.0; i1++) {
-                        sb2.append(doubles[i1] + " ");
+                        char[] technicalDouble = String.valueOf(doubles[i1]).toCharArray();
+                        if (technicalDouble[0] == '0') {
+                            StringBuilder doub = new StringBuilder();
+                            for (int j = 1; j < technicalDouble.length; j++) {
+                                doub.append(technicalDouble[j]);
+                            }
+                            sb2.append(doub.toString() + " ");
+                        } else {
+                            sb2.append(doubles[i1] + " ");
+                        }
                     }
                     System.out.println(sb2.toString());
                     clear();
@@ -122,7 +132,7 @@ public class Part3 {
 
     }
 
-    private static void clear () {
+    private static void clear() {
         sb2.delete(0, sb2.length());
     }
 
