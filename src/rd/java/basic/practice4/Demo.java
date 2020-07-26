@@ -1,6 +1,6 @@
 package rd.java.basic.practice4;
+
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
@@ -8,7 +8,7 @@ public class Demo {
 
     private static final InputStream STD_IN = System.in;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         System.out.println("=========================== PART1");
         Part1.main(args);
