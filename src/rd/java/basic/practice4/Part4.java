@@ -6,8 +6,6 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Part4 implements Iterable<String> {
     private String[] elementData;
@@ -52,10 +50,12 @@ public class Part4 implements Iterable<String> {
     private class Iterator<String> implements java.util.Iterator {
         int cursor;       // index of next element to return
         int lastRet = -1; // index of last element returned; -1 if no such
+
         @Override
         public boolean hasNext() {
             return cursor != size;
         }
+
         @Override
         public Object next() {
             int i = cursor;
@@ -65,6 +65,7 @@ public class Part4 implements Iterable<String> {
             cursor = i + 1;
             return elementData1[i];
         }
+
         @Override
         public void remove() {
             throw new UnsupportedOperationException();
@@ -105,8 +106,8 @@ public class Part4 implements Iterable<String> {
         return (T[]) copyOf(original, newLength, original.getClass());
     }
 
-    public static <T,U> T[] copyOf(U[] original, int newLength, Class<? extends T[]> newType) {
-        T[] copy = ((Object)newType == (Object)Object[].class)
+    public static <T, U> T[] copyOf(U[] original, int newLength, Class<? extends T[]> newType) {
+        T[] copy = ((Object) newType == (Object) Object[].class)
                 ? (T[]) new Object[newLength]
                 : (T[]) java.lang.reflect.Array.newInstance(newType.getComponentType(), newLength);
         System.arraycopy(original, 0, copy, 0,
@@ -132,21 +133,27 @@ public class Part4 implements Iterable<String> {
     }
 
 
-
-
     public static void main(String[] args) {
         String input = getInput("part4.txt");
-        final String regex = "[À-ß][\\s,\\w]*[.]";
-        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE | Pattern.UNICODE_CHARACTER_CLASS);
-        Matcher matcher = pattern.matcher(input);
+        StringBuilder sb1;
         Part4 array = new Part4();
-        while (matcher.find()) {
-            array.add(input.substring(matcher.start(), matcher.end()));
+        String[] inputArray = input.split("[.]");
+        for (int i = 0; i < inputArray.length; i++) {
+            if (i != 0) {
+                sb1 = new StringBuilder(inputArray[i]);
+                sb1.deleteCharAt(0);
+                array.add(sb1.toString() + ".");
+            } else {
+                array.add(inputArray[i] + ".");
+            }
         }
 
         Iterator iterator = array.iterator();
         while (iterator.hasNext()) {
-            System.out.print(iterator.next() + "\n");
+            System.out.print(iterator.next());
+            if (iterator.hasNext()) {
+                System.out.print("\n");
+            }
         }
     }
 }
