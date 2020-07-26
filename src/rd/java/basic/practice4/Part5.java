@@ -12,6 +12,7 @@ public class Part5 {
     private InputStream inputStream;
 
     public static void main(String[] args) {
+        Logger logger5 = Logger.getLogger(Part5.class.getName());
         boolean repeat = true;
         Part5 obj = new Part5();
 
@@ -31,14 +32,16 @@ public class Part5 {
                         try {
                             System.out.println(obj.getEnPropValues(s[0]));
                         } catch (IOException ex) {
-                            ex.printStackTrace();
+                            String message5 = "Exception: " + ex;
+                            logger5.log(Level.ALL, message5, ex);
                         }
                         break;
                     case "ru":
                         try {
                             System.out.println(obj.getRuPropValues(s[0]));
                         } catch (IOException ex) {
-                            ex.printStackTrace();
+                            String message5 = "Exception: " + ex;
+                            logger5.log(Level.ALL, message5, ex);
                         }
                         break;
                     default:
@@ -49,7 +52,7 @@ public class Part5 {
     }
 
     private String getEnPropValues(String key) throws IOException {
-        Logger logger5 = Logger.getLogger(Part6.class.getName());
+        Logger logger5 = Logger.getLogger(Part5.class.getName());
         String result = "";
         try {
             Properties prop = new Properties();
@@ -70,7 +73,7 @@ public class Part5 {
     }
 
     private String getRuPropValues(String key) throws IOException {
-        Logger logger5 = Logger.getLogger(Part6.class.getName());
+        Logger logger5 = Logger.getLogger(Part5.class.getName());
         String result = "";
         try {
             Properties prop = new Properties();
