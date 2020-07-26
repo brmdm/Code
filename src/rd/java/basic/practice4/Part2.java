@@ -22,7 +22,7 @@ public class Part2 {
         }
 
 
-        String output = bubbleSort(getInput("part2.txt"));
+        String output = bubbleSort(getInput2("part2.txt"));
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));){
             writer.write(output);
         } catch (Exception e) {
@@ -86,20 +86,20 @@ public class Part2 {
         return random.nextInt(50);
     }
 
-    private static String getInput(String fileName) {
-        Logger logger = Logger.getLogger(Part2.class.getName());
-        StringBuilder sb = new StringBuilder();
+    private static String getInput2(String fileName) {
+        Logger logger2 = Logger.getLogger(Part2.class.getName());
+        StringBuilder sb2 = new StringBuilder();
         try {
-            Scanner scanner = new Scanner(new File(fileName), "cp1251");
-            while (scanner.hasNextLine()) {
-                sb.append(scanner.nextLine()).append(System.lineSeparator());
+            Scanner scanner2 = new Scanner(new File(fileName), "cp1251");
+            while (scanner2.hasNextLine()) {
+                sb2.append(scanner2.nextLine()).append(System.lineSeparator());
             }
-            scanner.close();
-            return sb.toString().trim();
+            scanner2.close();
+            return sb2.toString().trim();
         } catch (IOException ex) {
-            String message = "Unexpected Exception with input method";
-            logger.log(Level.ALL, message, ex);
+            String message2 = "Unexpected Exception with input method";
+            logger2.log(Level.ALL, message2, ex);
         }
-        return sb.toString();
+        return sb2.toString();
     }
 }
