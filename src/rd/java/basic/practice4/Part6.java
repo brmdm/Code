@@ -34,8 +34,10 @@ public class Part6 {
         }
 
         Scanner console = new Scanner(System.in);
+        String inputstr;
         while (repeat) {
-            switch (console.nextLine()) {
+            inputstr = console.nextLine();
+            switch (inputstr) {
                 case "stop":
                     repeat = false;
                     break;
@@ -46,7 +48,7 @@ public class Part6 {
                     System.out.println(sbCyrl.toString());
                     break;
                 default:
-                    System.out.println("Incorrect input");
+                    System.out.println(inputstr + ": Incorrect input");
                     break;
             }
         }

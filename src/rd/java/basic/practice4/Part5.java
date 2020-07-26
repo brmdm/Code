@@ -15,30 +15,33 @@ public class Part5 {
 
 
         Scanner console = new Scanner(System.in);
-        String [] s;
+        String[] s;
         while (repeat) {
             s = console.nextLine().split("\\s");
-
-            switch (s[1]) {
-                case "stop":
-                    repeat = false;
-                    break;
-                case "en":
-                    try {
-                    System.out.println(obj.getEnPropValues(s[0]));
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                    break;
-                case "ru":
-                    try {
-                        System.out.println(obj.getRuPropValues(s[0]));
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                    break;
-                default:
-                    System.out.println("Invalid input");
+            if (s[0].equals("stop")) {
+                repeat = false;
+            } else {
+                switch (s[1]) {
+                    case "stop":
+                        repeat = false;
+                        break;
+                    case "en":
+                        try {
+                            System.out.println(obj.getEnPropValues(s[0]));
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                        break;
+                    case "ru":
+                        try {
+                            System.out.println(obj.getRuPropValues(s[0]));
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                        break;
+                    default:
+                        System.out.println("Invalid input");
+                }
             }
         }
     }
