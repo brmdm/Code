@@ -12,7 +12,7 @@ public class Part3 {
     private static StringBuilder sb2 = new StringBuilder();
 
     public static void main(String[] args) {
-        String input = getInput("part3.txt");
+        String input = getInput3("part3.txt");
         final String doubleRegex = "[\\d]*[.][\\d]*";
         final Pattern doublePattern = Pattern.compile(doubleRegex, Pattern.MULTILINE | Pattern.UNICODE_CHARACTER_CLASS);
         Matcher doubleMatcher;
@@ -91,14 +91,14 @@ public class Part3 {
                         sb2.append(chars[i1] + " ");
                     }
                     System.out.println(sb2.toString());
-                    clear();
+                    clear3();
                     break;
                 case "int":
                     for (int i1 = 0; integ[i1] != 0; i1++) {
                         sb2.append(integ[i1] + " ");
                     }
                     System.out.println(sb2.toString());
-                    clear();
+                    clear3();
                     break;
                 case "double":
                     for (int i1 = 0; doubles[i1] != 0.0; i1++) {
@@ -114,14 +114,14 @@ public class Part3 {
                         }
                     }
                     System.out.println(sb2.toString());
-                    clear();
+                    clear3();
                     break;
                 case "String":
                     for (int i1 = 0; str1[i1] != null; i1++) {
                         sb2.append(str1[i1] + " ");
                     }
                     System.out.println(sb2.toString());
-                    clear();
+                    clear3();
                     break;
                 default:
                     System.out.println("Incorrect input");
@@ -132,24 +132,24 @@ public class Part3 {
 
     }
 
-    private static void clear() {
+    private static void clear3() {
         sb2.delete(0, sb2.length());
     }
 
-    private static String getInput(String fileName) {
-        Logger logger = Logger.getLogger(Part3.class.getName());
-        StringBuilder sb = new StringBuilder();
+    private static String getInput3(String fileName) {
+        Logger logger3 = Logger.getLogger(Part3.class.getName());
+        StringBuilder sb3 = new StringBuilder();
         try {
-            Scanner scanner = new Scanner(new File(fileName), "cp1251");
-            while (scanner.hasNextLine()) {
-                sb.append(scanner.nextLine()).append(System.lineSeparator());
+            Scanner scanner3 = new Scanner(new File(fileName), "cp1251");
+            while (scanner3.hasNextLine()) {
+                sb3.append(scanner3.nextLine()).append(System.lineSeparator());
             }
-            scanner.close();
-            return sb.toString().trim();
+            scanner3.close();
+            return sb3.toString().trim();
         } catch (IOException ex) {
-            String message = "Unexpected Exception";
-            logger.log(Level.ALL, message, ex);
+            String message3 = "Unexpected Exception";
+            logger3.log(Level.ALL, message3, ex);
         }
-        return sb.toString();
+        return sb3.toString();
     }
 }
