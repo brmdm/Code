@@ -1,16 +1,14 @@
 package test.rd.java.basic.practice4;
 
 import org.junit.Test;
-import rd.java.basic.practice3.Util;
 
 import static junit.framework.Assert.assertEquals;
-import static rd.java.basic.practice3.Part2.convert;
+import static rd.java.basic.practice4.Part2.bubbleSort;
 
 public class Part2Test {
     @Test
     public void main() {
-        String input = Util.getInput("part2.txt");
-        assertEquals("Min: I, s, m\n" +
-                "Max: younger, anybody, assured, changed", convert(input));
+        String s = "32 53 54 65 12 56 68 9 87 32";
+        assertEquals("9 12 32 32 53 54 56 65 68 87", bubbleSort(s));
     }
 }

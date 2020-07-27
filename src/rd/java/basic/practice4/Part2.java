@@ -49,7 +49,7 @@ public class Part2 {
         return sb.toString();
     }
 
-    private static String bubbleSort (String unsort) {
+    public static String bubbleSort (String unsort) {
         StringBuilder sb = new StringBuilder();
         Scanner read = new Scanner(unsort);
         read.useDelimiter("\\s");
