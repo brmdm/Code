@@ -57,11 +57,11 @@ public class Part4 implements Iterable<String> {
         }
 
         @Override
-        public Object next() {
+        public String next() {
             int i = cursor;
             if (i >= size)
                 throw new NoSuchElementException();
-            Object[] elementData1 = Part4.this.elementData;
+            String[] elementData1 = (String[]) Part4.this.elementData;
             cursor = i + 1;
             return elementData1[i];
         }
@@ -136,24 +136,42 @@ public class Part4 implements Iterable<String> {
     public static void main(String[] args) {
         String input = getInput("part4.txt");
         StringBuilder sb1;
+        StringBuilder sb = new StringBuilder();
         Part4 array = new Part4();
-        String[] inputArray = input.split("[.]");
-        for (int i = 0; i < inputArray.length; i++) {
-            if (i != 0) {
-                sb1 = new StringBuilder(inputArray[i]);
-                sb1.deleteCharAt(0);
-                array.add(sb1.toString() + ".");
-            } else {
-                array.add(inputArray[i] + ".");
+//        String[] inputArray = input.split("[.]");
+//        for (int i = 0; i < inputArray.length; i++) {
+//            if (i != 0) {
+//                sb1 = new StringBuilder(inputArray[i]);
+//                sb1.deleteCharAt(0);
+//                array.add(sb1.toString() + ".");
+//            } else {
+//                array.add(inputArray[i] + ".");
+//            }
+//        }
+
+        Scanner scanner = new Scanner(input);
+        scanner.useDelimiter("\\s|\\n");
+
+        try {
+            while (scanner.hasNext()) {
+                array.add(scanner.next());
             }
+        } finally {
+            scanner.close();
         }
 
+        String s;
+        char[] c;
         Iterator iterator = array.iterator();
         while (iterator.hasNext()) {
-            System.out.print(iterator.next());
-            if (iterator.hasNext()) {
-                System.out.print("\n");
+            s = (String) iterator.next();
+            c = s.toCharArray();
+            if (c[c.length - 1] == '.') {
+                sb.append(s + "\n");
+            } else {
+                sb.append(s + " ");
             }
         }
+        System.out.print(sb.toString());
     }
 }
