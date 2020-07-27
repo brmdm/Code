@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 public class Part5 {
     private InputStream inputStream;
+    private static final String EXCEP = "Exception: ";
 
     public static void main(String[] args) {
         Logger logger5 = Logger.getLogger(Part5.class.getName());
@@ -32,7 +33,7 @@ public class Part5 {
                         try {
                             System.out.println(obj.getEnPropValues(s[0]));
                         } catch (IOException ex) {
-                            String message5 = "Exception: " + ex;
+                            String message5 = EXCEP + ex;
                             logger5.log(Level.ALL, message5, ex);
                         }
                         break;
@@ -40,7 +41,7 @@ public class Part5 {
                         try {
                             System.out.println(obj.getRuPropValues(s[0]));
                         } catch (IOException ex) {
-                            String message5 = "Exception: " + ex;
+                            String message5 = EXCEP + ex;
                             logger5.log(Level.ALL, message5, ex);
                         }
                         break;
@@ -66,7 +67,7 @@ public class Part5 {
 
             result = prop.getProperty(key);
         } catch (Exception e) {
-            String message5 = "Exception: " + e;
+            String message5 = EXCEP  + e;
             logger5.log(Level.ALL, message5, e);
         }
         return result;
@@ -87,7 +88,7 @@ public class Part5 {
 
             result = prop.getProperty(key);
         } catch (Exception e) {
-            String message5 = "Exception: " + e;
+            String message5 = EXCEP + e;
             logger5.log(Level.ALL, message5, e);
         }
         return result;
