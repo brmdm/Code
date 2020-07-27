@@ -53,44 +53,44 @@ public class Part5 {
     }
 
     private String getEnPropValues(String key) throws IOException {
-        Logger logger5 = Logger.getLogger(Part5.class.getName());
-        String result = "";
+        Logger logger50 = Logger.getLogger(Part5.class.getName());
+        String result50 = "";
         try {
-            Properties prop = new Properties();
-            String propFileName = "main/resources_en.properties";
-            inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+            Properties prop50 = new Properties();
+            String propFileName50 = "main/resources_en.properties";
+            inputStream = getClass().getClassLoader().getResourceAsStream(propFileName50);
             if (inputStream != null) {
-                prop.load(inputStream);
+                prop50.load(inputStream);
             } else {
-                throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+                throw new FileNotFoundException("property file '" + propFileName50 + "' not found in the classpath");
             }
 
-            result = prop.getProperty(key);
+            result50 = prop50.getProperty(key);
         } catch (Exception e) {
             String message5 = EXCEP  + e;
-            logger5.log(Level.ALL, message5, e);
+            logger50.log(Level.ALL, message5, e);
         }
-        return result;
+        return result50;
     }
 
     private String getRuPropValues(String key) throws IOException {
-        Logger logger5 = Logger.getLogger(Part5.class.getName());
-        String result = "";
+        Logger logger51 = Logger.getLogger(Part5.class.getName());
+        String result21 = "";
         try {
-            Properties prop = new Properties();
-            String propFileName = "main/resources_ru.properties";
-            inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+            Properties prop2 = new Properties();
+            String propFileName2 = "main/resources_ru.properties";
+            inputStream = getClass().getClassLoader().getResourceAsStream(propFileName2);
             if (inputStream != null) {
-                prop.load(inputStream);
+                prop2.load(inputStream);
             } else {
-                throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+                throw new FileNotFoundException("property file '" + propFileName2 + "' not found in the classpath");
             }
 
-            result = prop.getProperty(key);
+            result21 = prop2.getProperty(key);
         } catch (Exception e) {
-            String message5 = EXCEP + e;
-            logger5.log(Level.ALL, message5, e);
+            String message53 = EXCEP + e;
+            logger51.log(Level.ALL, message53, e);
         }
-        return result;
+        return result21;
     }
 }
