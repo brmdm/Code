@@ -43,7 +43,7 @@ public class Part4 implements Iterable<String> {
 
     @Override
     public Iterator<String> iterator() {
-        return new Iterator<String>();
+        return new Iterator<>();
     }
 
 
@@ -135,20 +135,8 @@ public class Part4 implements Iterable<String> {
 
     public static void main(String[] args) {
         String input = getInput("part4.txt");
-        StringBuilder sb1;
         StringBuilder sb = new StringBuilder();
         Part4 array = new Part4();
-//        String[] inputArray = input.split("[.]");
-//        for (int i = 0; i < inputArray.length; i++) {
-//            if (i != 0) {
-//                sb1 = new StringBuilder(inputArray[i]);
-//                sb1.deleteCharAt(0);
-//                array.add(sb1.toString() + ".");
-//            } else {
-//                array.add(inputArray[i] + ".");
-//            }
-//        }
-
         Scanner scanner = new Scanner(input);
         scanner.useDelimiter("\\s|\\n");
 
