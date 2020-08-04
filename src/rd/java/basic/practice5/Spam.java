@@ -1,6 +1,8 @@
 package rd.java.basic.practice5;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Spam {
     private static boolean stopFlag = true;
@@ -9,6 +11,7 @@ public class Spam {
     final int[] delays;
 
     public Spam(final String[] messages, final int[] delays) {
+        Logger logger = Logger.getLogger(Spam.class.getName());
         threads = new Thread[messages.length];
         this.messages = messages;
         this.delays = delays;
@@ -21,7 +24,8 @@ public class Spam {
                     try {
                         Thread.sleep(delays[finalCount]);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        String message = "Exception in Constructor";
+                        logger.log(Level.ALL, message, e);
                     }
                 }
             });
