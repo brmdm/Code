@@ -35,9 +35,10 @@ public class Part3 {
             t[i] = new Thread(() -> {
                 int count = 0;
                 while (count < iterations) {
-                    System.out.println(counter == counter2);
-                    counter++;
                     try {
+                        Thread.sleep(1);
+                        System.out.println(counter == counter2);
+                        counter++;
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
                         String message = "Exception in not sync Comparing";
@@ -61,9 +62,10 @@ public class Part3 {
                 synchronized (this) {
                     int count = 0;
                     while (count < iterations) {
-                        System.out.println(counter == counter2);
-                        counter++;
                         try {
+                            Thread.sleep(1);
+                            System.out.println(counter == counter2);
+                            counter++;
                             Thread.sleep(100);
                         } catch (InterruptedException e) {
                             String message = "Exception in not sync Comparing";
