@@ -3,6 +3,8 @@ package rd.java.basic.practice5;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Part3 {
     private int counter;
@@ -27,6 +29,7 @@ public class Part3 {
     }
 
     public void compare() throws InterruptedException {
+        Logger logger = Logger.getLogger(Part3.class.getName());
         ExecutorService es = Executors.newCachedThreadPool();
         for (int i = 0; i < t.length; i++) {
             t[i] = new Thread(() -> {
@@ -37,7 +40,8 @@ public class Part3 {
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        String message = "Exception in not sync Comparing";
+                        logger.log(Level.ALL, message, e);
                     }
                     counter2++;
                     count++;
@@ -50,6 +54,7 @@ public class Part3 {
     }
 
     public void compareSync() throws InterruptedException {
+        Logger logger = Logger.getLogger(Part3.class.getName());
         ExecutorService es = Executors.newCachedThreadPool();
         for (int i = 0; i < t.length; i++) {
             t[i] = new Thread(() -> {
@@ -61,7 +66,8 @@ public class Part3 {
                         try {
                             Thread.sleep(100);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            String message = "Exception in not sync Comparing";
+                            logger.log(Level.ALL, message, e);
                         }
                         counter2++;
                         count++;
