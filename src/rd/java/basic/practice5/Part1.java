@@ -1,5 +1,10 @@
 package rd.java.basic.practice5;
 
+import rd.java.basic.practice4.Part2;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Part1 {
     static Thread t1 = new Thread(new NameThreadImpl());
     static Thread t2 = new NameThreadExt();
@@ -12,6 +17,7 @@ public class Part1 {
     }
 
     static class NameThreadImpl implements Runnable {
+        Logger logger = Logger.getLogger(NameThreadImpl.class.getName());
         int count = 0;
         @Override
         public void run() {
@@ -20,7 +26,8 @@ public class Part1 {
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    String message = "Exception in Implement Class";
+                    logger.log(Level.ALL, message, e);
                 }
                 count++;
             }
@@ -28,6 +35,7 @@ public class Part1 {
     }
 
     static class NameThreadExt extends Thread {
+        Logger logger = Logger.getLogger(NameThreadExt.class.getName());
         int count = 0;
         @Override
         public void run() {
@@ -36,7 +44,8 @@ public class Part1 {
                 try {
                     sleep(500);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    String message = "Exception in Extend Class";
+                    logger.log(Level.ALL, message, e);
                 }
                 count++;
             }
