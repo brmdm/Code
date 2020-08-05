@@ -1,7 +1,5 @@
 package rd.java.basic.practice5;
 
-import rd.java.basic.practice4.Part2;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
