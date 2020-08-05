@@ -7,7 +7,7 @@ public class Part2 {
 
 //    private static final InputStream YOUR_OWN_INPUT_STREAM = ;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 //        System.setIn(YOUR_OWN_INPUT_STREAM);
         Thread t = new Thread(() -> Spam.main(null));
         t.start();

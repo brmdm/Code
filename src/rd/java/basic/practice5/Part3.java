@@ -19,7 +19,7 @@ public class Part3 {
         this.t = new Thread[threads];
     }
 
-    public static void main(final String[] args) throws InterruptedException {
+    public static void main(final String[] args) throws Exception {
         Part3 p3 = new Part3(10, 5);
         p3.compare();
         System.out.println("-----------------------------------");
@@ -28,7 +28,7 @@ public class Part3 {
         p3.compareSync();
     }
 
-    public void compare() throws InterruptedException {
+    public void compare() throws Exception {
         Logger logger = Logger.getLogger(Part3.class.getName());
         ExecutorService es = Executors.newCachedThreadPool();
         for (int i = 0; i < t.length; i++) {
@@ -54,7 +54,7 @@ public class Part3 {
         while(!es.awaitTermination(1, TimeUnit.MINUTES));
     }
 
-    public void compareSync() throws InterruptedException {
+    public void compareSync() throws Exception {
         Logger logger = Logger.getLogger(Part3.class.getName());
         ExecutorService es = Executors.newCachedThreadPool();
         for (int i = 0; i < t.length; i++) {
