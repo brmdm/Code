@@ -37,6 +37,7 @@ public class Part4 {
             Thread.currentThread().interrupt();
         }
         System.out.print(searchMax(array1));
+        Thread.currentThread().interrupt();
 
     }
 

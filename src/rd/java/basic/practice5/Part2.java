@@ -17,5 +17,7 @@ public class Part2 {
             logger.log(Level.ALL, message, e);
             Thread.currentThread().interrupt();
         }
+        t.interrupt();
+        Thread.currentThread().interrupt();
     }
 }
