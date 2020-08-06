@@ -11,7 +11,8 @@ public class Part2 {
         Thread t = new Thread(() -> Spam.main(null));
         t.start();
         try {
-        t.join();} catch (InterruptedException e) {
+            t.join();
+        } catch (InterruptedException e) {
             String message = "Exception in Part2";
             logger.log(Level.ALL, message, e);
             Thread.currentThread().interrupt();
