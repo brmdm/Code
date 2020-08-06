@@ -19,7 +19,7 @@ public class Part3 {
         this.t = new Thread[threads];
     }
 
-    public static void main(final String[] args) throws Exception {
+    public static void main(final String[] args) {
         Part3 p3 = new Part3(10, 5);
         p3.compare();
         System.out.println("-----------------------------------");
@@ -28,7 +28,7 @@ public class Part3 {
         p3.compareSync();
     }
 
-    public void compare() throws Exception {
+    public void compare() {
         Logger logger = Logger.getLogger(Part3.class.getName());
         ExecutorService es = Executors.newCachedThreadPool();
         for (int i = 0; i < t.length; i++) {
@@ -51,10 +51,15 @@ public class Part3 {
             es.execute(t[i]);
         }
         es.shutdown();
-        while(!es.awaitTermination(1, TimeUnit.MINUTES));
+        try {
+            while (!es.awaitTermination(1, TimeUnit.MINUTES)) ;
+        } catch (InterruptedException e) {
+            String message = "Exception in not sync Comparing2";
+            logger.log(Level.ALL, message, e);
+        }
     }
 
-    public void compareSync() throws Exception {
+    public void compareSync() {
         Logger logger = Logger.getLogger(Part3.class.getName());
         ExecutorService es = Executors.newCachedThreadPool();
         for (int i = 0; i < t.length; i++) {
@@ -79,7 +84,12 @@ public class Part3 {
             es.execute(t[i]);
         }
         es.shutdown();
-        while(!es.awaitTermination(1, TimeUnit.MINUTES));
+        try {
+            while (!es.awaitTermination(1, TimeUnit.MINUTES)) ;
+        } catch (InterruptedException e) {
+            String message = "Exception in not sync Comparing2";
+            logger.log(Level.ALL, message, e);
+        }
     }
 
 }
