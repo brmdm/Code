@@ -35,7 +35,7 @@ public class Part3 {
                 int count = 0;
                 while (count < iterations) {
                     try {
-                        Thread.sleep(1);
+                        Thread.sleep(2);
                         System.out.println(counter == counter2);
                         counter++;
                         Thread.sleep(100);
@@ -69,7 +69,7 @@ public class Part3 {
                     int count = 0;
                     while (count < iterations) {
                         try {
-                            Thread.sleep(1);
+                            Thread.sleep(2);
                             System.out.println(counter == counter2);
                             counter++;
                             Thread.sleep(100);
