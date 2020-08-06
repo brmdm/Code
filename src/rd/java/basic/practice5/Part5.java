@@ -15,7 +15,7 @@ public class Part5 {
     private static RandomAccessFile file;
     private static final Thread[] t = new Thread[10];
     private static final ExecutorService es = Executors.newCachedThreadPool();
-    static Logger logger = Logger.getLogger(Part3.class.getName());
+    static Logger logger = Logger.getLogger(Part5.class.getName());
     private static int globalNumber = 0;
 
     static {
@@ -38,9 +38,7 @@ public class Part5 {
     private static void threads() {
         Logger logger = Logger.getLogger(Part3.class.getName());
         for (int i = 0; i < 10; i++) {
-            int finalI = i;
             t[i] = new Thread(() -> {
-                int number = finalI;
                 synchronized (file) {
                     try {
                         write();
@@ -61,13 +59,12 @@ public class Part5 {
         threads();
         es.shutdown();
         try {
-        while (!es.awaitTermination(1, TimeUnit.MINUTES)) ;
-        {
-        }
+        while (!es.awaitTermination(1, TimeUnit.MINUTES));
         file.close();
         } catch (InterruptedException e) {
             String message = "InterruptedException in Part5.main";
             logger.log(Level.ALL, message, e);
+            Thread.currentThread().interrupt();
         } catch (IOException e) {
             String message = "IOException in Part5.main";
             logger.log(Level.ALL, message, e);

@@ -17,6 +17,7 @@ public class Part1 {
         } catch (InterruptedException e) {
             String message = "Exception in Part1.main";
             logger.log(Level.ALL, message, e);
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -33,6 +34,7 @@ public class Part1 {
                 } catch (InterruptedException e) {
                     String message = "Exception in Implement Class";
                     logger.log(Level.ALL, message, e);
+                    Thread.currentThread().interrupt();
                 }
                 count++;
             }
@@ -52,6 +54,7 @@ public class Part1 {
                 } catch (InterruptedException e) {
                     String message = "Exception in Extend Class";
                     logger.log(Level.ALL, message, e);
+                    Thread.currentThread().interrupt();
                 }
                 count++;
             }

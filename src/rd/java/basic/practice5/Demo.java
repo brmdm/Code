@@ -1,9 +1,7 @@
 package rd.java.basic.practice5;
 
-import java.io.IOException;
-
 public class Demo {
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) {
         Part1.main(null);
         Part2.main(null);
         Part3.main(null);

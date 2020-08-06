@@ -26,6 +26,7 @@ public class Spam {
                     } catch (InterruptedException e) {
                         String message = "Exception in Constructor";
                         logger.log(Level.ALL, message, e);
+                        Thread.currentThread().interrupt();
                     }
                 }
             });

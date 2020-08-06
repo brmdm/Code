@@ -29,8 +29,8 @@ public class Part3 {
     }
 
     public void compare() {
-        Logger logger = Logger.getLogger(Part3.class.getName());
-        ExecutorService es = Executors.newCachedThreadPool();
+        Logger logger1 = Logger.getLogger(Part3.class.getName());
+        ExecutorService es1 = Executors.newCachedThreadPool();
         for (int i = 0; i < t.length; i++) {
             t[i] = new Thread(() -> {
                 int count = 0;
@@ -42,26 +42,28 @@ public class Part3 {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
                         String message = "Exception in not sync Comparing";
-                        logger.log(Level.ALL, message, e);
+                        logger1.log(Level.ALL, message, e);
+                        Thread.currentThread().interrupt();
                     }
                     counter2++;
                     count++;
                 }
             });
-            es.execute(t[i]);
+            es1.execute(t[i]);
         }
-        es.shutdown();
+        es1.shutdown();
         try {
-            while (!es.awaitTermination(1, TimeUnit.MINUTES)) ;
+            while (!es1.awaitTermination(1, TimeUnit.MINUTES)) ;
         } catch (InterruptedException e) {
-            String message = "Exception in not sync Comparing2";
-            logger.log(Level.ALL, message, e);
+            String message = "Exception in NotSync Comparing#2";
+            logger1.log(Level.ALL, message, e);
+            Thread.currentThread().interrupt();
         }
     }
 
     public void compareSync() {
-        Logger logger = Logger.getLogger(Part3.class.getName());
-        ExecutorService es = Executors.newCachedThreadPool();
+        Logger logger2 = Logger.getLogger(Part3.class.getName());
+        ExecutorService es2 = Executors.newCachedThreadPool();
         for (int i = 0; i < t.length; i++) {
             t[i] = new Thread(() -> {
                 synchronized (this) {
@@ -74,21 +76,23 @@ public class Part3 {
                             Thread.sleep(100);
                         } catch (InterruptedException e) {
                             String message = "Exception in not sync Comparing";
-                            logger.log(Level.ALL, message, e);
+                            logger2.log(Level.ALL, message, e);
+                            Thread.currentThread().interrupt();
                         }
                         counter2++;
                         count++;
                     }
                 }
             });
-            es.execute(t[i]);
+            es2.execute(t[i]);
         }
-        es.shutdown();
+        es2.shutdown();
         try {
-            while (!es.awaitTermination(1, TimeUnit.MINUTES)) ;
+            while (!es2.awaitTermination(1, TimeUnit.MINUTES)) ;
         } catch (InterruptedException e) {
             String message = "Exception in not sync Comparing2";
-            logger.log(Level.ALL, message, e);
+            logger2.log(Level.ALL, message, e);
+            Thread.currentThread().interrupt();
         }
     }
 

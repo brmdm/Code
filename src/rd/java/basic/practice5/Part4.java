@@ -34,6 +34,7 @@ public class Part4 {
         } catch (InterruptedException e) {
             String message = "Exception in Part4.main";
             logger.log(Level.ALL, message, e);
+            Thread.currentThread().interrupt();
         }
         System.out.print(searchMax(array1));
 
