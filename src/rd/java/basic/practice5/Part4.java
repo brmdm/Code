@@ -15,7 +15,7 @@ public class Part4 {
     private static int globalMax = 0;
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         String input = getInput("part4.txt");
         Scanner scanner = new Scanner(input);
         scanner.useDelimiter("\\r\\n");
@@ -28,8 +28,13 @@ public class Part4 {
         } finally {
             scanner.close();
         }
-
-        System.out.println(multiSearch(array1));
+        Logger logger = Logger.getLogger(Part1.class.getName());
+        try {
+            System.out.println(multiSearch(array1));
+        } catch (InterruptedException e) {
+            String message = "Exception in Part4.main";
+            logger.log(Level.ALL, message, e);
+        }
         System.out.print(searchMax(array1));
 
     }
@@ -55,7 +60,7 @@ public class Part4 {
         }
 
         es.shutdown();
-        while(!es.awaitTermination(1, TimeUnit.MINUTES));
+        while (!es.awaitTermination(1, TimeUnit.MINUTES)) ;
         long time = (System.nanoTime() - start) / 1_000_000;
         sb.append(globalMax + "\n" + time);
         return sb.toString();

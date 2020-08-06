@@ -56,14 +56,22 @@ public class Part5 {
     }
 
 
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) {
+        Logger logger = Logger.getLogger(Part1.class.getName());
         threads();
         es.shutdown();
+        try {
         while (!es.awaitTermination(1, TimeUnit.MINUTES)) ;
         {
         }
-
         file.close();
+        } catch (InterruptedException e) {
+            String message = "InterruptedException in Part5.main";
+            logger.log(Level.ALL, message, e);
+        } catch (IOException e) {
+            String message = "IOException in Part5.main";
+            logger.log(Level.ALL, message, e);
+        }
 
         String input = getInput5("part5.txt");
         System.out.print(input);
