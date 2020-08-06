@@ -22,7 +22,6 @@ public class Part3 {
     public static void main(final String[] args) {
         Part3 p3 = new Part3(10, 5);
         p3.compare();
-        System.out.println("-----------------------------------");
         p3.counter = 0;
         p3.counter2 = 0;
         p3.compareSync();
