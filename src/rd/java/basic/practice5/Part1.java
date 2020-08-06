@@ -4,13 +4,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Part1 {
-    static Thread t1 = new Thread(new NameThreadImpl());
-    static Thread t2 = new NameThreadExt();
 
     public static void main(String[] args) {
         Logger logger = Logger.getLogger(Part1.class.getName());
+        Thread t1 = new Thread(new NameThreadImpl());
+        Thread t2 = new NameThreadExt();
         try {
             t1.start();
+            Thread.sleep(2000);
             t2.start();
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -19,6 +20,8 @@ public class Part1 {
             Thread.currentThread().interrupt();
         } catch (IllegalThreadStateException e) {
             String message = "IllegalStateException";
+            System.out.println(212);
+            System.out.println(212);
             logger.log(Level.ALL, message, e);
             Thread.currentThread().interrupt();
         }
@@ -31,7 +34,7 @@ public class Part1 {
         @Override
         public void run() {
             while (count < 4) {
-                System.out.println(t1.getName());
+                System.out.println(Thread.currentThread().getName());
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -50,15 +53,8 @@ public class Part1 {
 
         @Override
         public void run() {
-            try {
-                sleep(2000);
-            } catch (InterruptedException e) {
-                String message = "Exception in Extend Class";
-                logger.log(Level.ALL, message, e);
-                Thread.currentThread().interrupt();
-            }
             while (count < 4) {
-                System.out.println(t2.getName());
+                System.out.println(Thread.currentThread().getName());
                 try {
                     sleep(500);
                 } catch (InterruptedException e) {
