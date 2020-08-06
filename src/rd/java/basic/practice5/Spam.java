@@ -52,10 +52,12 @@ public class Spam {
 
     public void stop() {
         stopFlag = false;
+        for (int i = 0; i < threads.length; i++) {
+            threads[i].interrupt();
+        }
     }
 
     private static class Worker extends Thread {
-
     }
 
 }

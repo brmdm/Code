@@ -11,11 +11,14 @@ public class Part1 {
         Logger logger = Logger.getLogger(Part1.class.getName());
         try {
             t1.start();
-            Thread.sleep(2000);
             t2.start();
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             String message = "Exception in Part1.main";
+            logger.log(Level.ALL, message, e);
+            Thread.currentThread().interrupt();
+        } catch (IllegalThreadStateException e) {
+            String message = "IllegalStateException";
             logger.log(Level.ALL, message, e);
             Thread.currentThread().interrupt();
         }
@@ -47,6 +50,13 @@ public class Part1 {
 
         @Override
         public void run() {
+            try {
+                sleep(2000);
+            } catch (InterruptedException e) {
+                String message = "Exception in Extend Class";
+                logger.log(Level.ALL, message, e);
+                Thread.currentThread().interrupt();
+            }
             while (count < 4) {
                 System.out.println(t2.getName());
                 try {
@@ -60,6 +70,4 @@ public class Part1 {
             }
         }
     }
-
-
 }

@@ -18,7 +18,7 @@ public class Part4 {
     public static void main(String[] args) {
         String input = getInput("part4.txt");
         Scanner scanner = new Scanner(input);
-        scanner.useDelimiter("\\r\\n");
+        scanner.useDelimiter("\\r\\n|\\n|\\r");
         try {
             int arrayCounter = 0;
             while (scanner.hasNext()) {
