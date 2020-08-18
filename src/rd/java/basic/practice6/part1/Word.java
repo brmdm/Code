@@ -6,9 +6,35 @@ public class Word implements Comparable<Word> {
 
     private int frequency;
 
+    public Word (String word) {
+        this.content = word;
+        this.frequency = 1;
+    }
+
+
     @Override
     public int compareTo(Word o) {
+        boolean equals = o.getContent().equals(this.content);
+        if (equals) {
+
+        }
+
         return 0;
     }
 
+
+
+
+    @Override
+    public String toString() {
+        return content + " : " + frequency;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void increaseFrequency() {
+        frequency++;
+    }
 }
