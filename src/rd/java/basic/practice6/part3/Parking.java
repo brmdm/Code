@@ -14,11 +14,29 @@ public class Parking {
         }
         counter = parking.length;
 
+        for (int i = k; i < parking.length; i++) {
+            if (parking[i] == 0) {
+                parking[i] = 1;
+                print();
+                System.out.println(", true");
+                return true;
+            }
+            counter--;
+        }
 
-
-
-
-
+        for (int i = 0; i < parking.length; i++) {
+            if (parking[i] == 0) {
+                parking[i] = 1;
+                print();
+                System.out.println(", true");
+                return true;
+            } else if (counter == 0) {
+                print();
+                System.out.println(", false");
+                return false;
+            }
+            counter--;
+        }
         return false;
     }
 
