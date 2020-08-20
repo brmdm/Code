@@ -30,47 +30,42 @@ public class WordContainer {
     }
 
     private void compare(String o) {
-        boolean equalsFlag = true;
-        boolean equals;
-        String[] variableWords = o.split("\\s");
+        boolean globalEquals = true;
+        int compare;
+        String[] variableString = o.split("\\s");
+        Word[] variableWords = new Word[variableString.length];
+        for (int i = 0; i < variableString.length; i++) {
+            variableWords[i] = new Word(variableString[i]);
+        }
         if (counter == 0) {
-            words[0] = new Word(variableWords[0]);
+            words[0] = new Word("12321");
             counter++;
         }
-
-        for (int i = 0; i < variableWords.length; i++) {
-
+        L: for (int i = 0; i < variableWords.length; i++) {
             for (int j = 0; words[j] != null; j++) {
-                equals = words[j].getContent().equals(variableWords[i]);
-                if (equals && counter != 1) {
+                compare = variableWords[i].compareTo(words[j]);
+                if (compare == 1) {
                     words[j].increaseFrequency();
-                    equalsFlag = false;
-                    break;
-                } else if (counter == 1) {
-                    equalsFlag = false;
-                    break;
+                    globalEquals = false;
+                    continue L;
                 }
             }
-
-            if (equalsFlag) {
-                words[counter] = new Word(variableWords[i]);
+            if (globalEquals) {
+                words[counter] = new Word(variableString[i]);
                 counter++;
             }
-            equalsFlag = true;
-
+            globalEquals = true;
         }
     }
-
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-
-
-        for (int i = 0; words[i] != null; i++) {
+        for (int i = 1; words[i] != null; i++) {
             sb.append(words[i].toString() + "\n");
         }
-
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
+
+
 }

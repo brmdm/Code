@@ -16,10 +16,10 @@ public class Word implements Comparable<Word> {
     public int compareTo(Word o) {
         boolean equals = o.getContent().equals(this.content);
         if (equals) {
-
+            return 1;
+        } else {
+            return 0;
         }
-
-        return 0;
     }
 
 
@@ -36,5 +36,9 @@ public class Word implements Comparable<Word> {
 
     public void increaseFrequency() {
         frequency++;
+    }
+
+    public int getFrequency() {
+        return frequency;
     }
 }
