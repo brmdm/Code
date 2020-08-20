@@ -54,9 +54,6 @@ public class Range implements Iterable<Integer> {
                 }
             }
 
-
-
-
             if (reverse) {
                 return --m;
             } else {
