@@ -6,7 +6,7 @@ public class Word implements Comparable<Word> {
 
     private int frequency;
 
-    public Word (String word) {
+    public Word(String word) {
         this.content = word;
         this.frequency = 1;
     }
@@ -14,15 +14,20 @@ public class Word implements Comparable<Word> {
 
     @Override
     public int compareTo(Word o) {
-        boolean equals = o.getContent().equals(this.content);
-        if (equals) {
-            return 1;
+        if (o.frequency == this.frequency) {
+            return sortByLexicograph(this, o);
         } else {
-            return 0;
+            return sortByFrequency(this, o);
         }
     }
 
+    private int sortByLexicograph(Word o1, Word o2) {
+        return o1.getContent().compareTo(o2.getContent());
+    }
 
+    private int sortByFrequency(Word o1, Word o2) {
+        return o2.getFrequency() - o1.getFrequency();
+    }
 
 
     @Override
